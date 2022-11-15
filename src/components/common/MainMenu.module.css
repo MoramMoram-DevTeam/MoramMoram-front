@@ -1,0 +1,36 @@
+.app_btn {
+  width: 264px;
+  height: 300px;
+  background-color: #FFF;
+  border-radius: 10px;
+  border: 1px solid #CBCBCB;
+  text-align: center;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.app_btn:hover {
+  border: 1.5px solid #FFB600;
+}
+
+.direct_btn {
+  margin: 0 auto;
+  width: 100px;
+  height: 30.5px;
+  background: url("../../assets/images/directbtn.svg") no-repeat;
+}
+
+.app_btn:hover .direct_btn {
+  background: url("../../assets/images/directbtn2.svg") no-repeat;
+}
+
+.fl_title {
+  font-family: 'SUIT-Medium';
+  font-size: 1.438rem;
+  color: #222222;
+  padding: 20px 22%;
+  line-height: 2rem;
+}

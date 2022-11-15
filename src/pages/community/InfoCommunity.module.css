@@ -1,0 +1,105 @@
+/* 내용 입력하기 */
+
+.foam_border {
+  margin: 2% 0;
+  width: 1050px;
+  height: 700px;
+  border-top: 2px solid #0C205E;
+  border-bottom: 2px solid #0C205E;
+}
+
+.text_title {
+  outline: 0;
+  border: 0;
+  width: 1048px;
+  height: 75px;
+  border-bottom: 0.5px solid #BABABA;
+  font-family: 'SUIT-Medium';
+  font-size: 25px;
+  
+}
+
+.text_title::placeholder,
+.text_note::placeholder
+ {
+  color: #BABABA;
+}
+
+.text_note {
+  display: block;
+  outline: 0;
+  border: 0;
+  width: 1106px;
+  height: 500px;
+  padding-left: 20px;
+  padding-top: 20px;
+  line-height: 25px;
+  font-family: 'SUIT-Medium';
+  font-size: 1.125rem;
+  overflow: auto;
+  resize: none;
+}
+
+/* 버튼 2개 */
+.under_btns {
+  position: relative;
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+}
+
+.file_btn {
+  width: 180px;
+  height: 49px;
+  background-color: #0C205E;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file_btn img {
+  margin-right: 10px;
+  color: #FFF;
+}
+
+.filetext {
+  font-size: 1.125rem;
+  font-family: 'SUIT-Medium';
+}
+
+.sub_filetext {
+  width: 178px;
+  height: 49px;
+  text-align: center;
+  font-size: 1.125rem;
+  font-family: 'SUIT-Regular';
+  border:1px solid #D9D9D9;
+  color: #D9D9D9;
+  cursor: pointer;
+  color: #222222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.sub_filetext:hover {
+  border:1px solid #00084A;
+
+}
+
+.upload_btn {
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 115px;
+  height: 49px;
+  border: 2px solid #00084A;
+  background-color: #FFCB1D;
+  font-size: 1.125rem;
+  font-family: 'SUIT-Medium';
+}

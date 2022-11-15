@@ -1,0 +1,40 @@
+.footer_wrap {
+  /* position:absolute;
+  bottom:0; */
+  width: 100%;
+  background-color: #0C205E;
+  height: 130px;  
+}
+
+.center_wrap {
+  margin: 0 auto;
+  padding-top: 20px;
+  width: 77vw;
+  height: 27px;
+  line-height: 27px;
+  display: flex;
+  justify-content:flex-start;
+  position: relative;
+}
+
+.logo {
+  width: 112px;
+  height: 27px;
+  margin-right: 20px;
+}
+
+.rights {
+  color: #EAEAEA; 
+}
+
+.icon {
+  position: absolute;
+  top: 22px;
+  right: 0;
+}
+
+.icon > img {
+  height: 24px;
+  cursor: pointer;
+  margin-left: 15px;
+}

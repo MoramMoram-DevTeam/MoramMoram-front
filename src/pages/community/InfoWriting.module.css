@@ -1,0 +1,166 @@
+.title {
+  font-family: 'SUIT-SemiBold';
+  color: #0C205E;
+  font-size: 2.25rem;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-end;
+  color: #BABABA;
+  font-family: 'SUIT-Regular';
+  font-size: 1.25rem;
+  line-height: 32px;
+
+}
+
+.list_btn {
+  width: 62px;
+  height: 32px;
+  font-family: 'SUIT-Medium';
+  font-size: 1.125rem;
+  color:#FFF;
+  background-color: #00084A;
+  line-height: 32px;
+  text-align: center;
+  margin-left: 15px;
+}
+
+.board {
+  margin-top: 1%;
+  border-top: 2px solid #0C205E;
+}
+
+.board > * {
+  margin-left: 1%;
+}
+
+.board_title {
+  font-size: 2rem;
+  font-family: 'SUIT-SemiBold';
+  margin: 2% 0 1% 1%;
+}
+
+.board_info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.125rem;
+  font-family: 'SUIT-SemiBold';
+  color: #BABABA;
+
+  padding-bottom: 2%;
+  border-bottom: 0.5px solid #BABABA;
+}
+
+.board_info span {
+  margin: 2px;
+}
+
+.board_desc {
+  padding: 5% 2% 15% 2%;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: 'SUIT-Regular';
+  
+}
+
+.feel_btn {
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+.like_btn {
+  width: 152px;
+  height: 49px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.25rem;
+  font-family: 'SUIT-Medium';
+  border: 2px solid #00084A;
+}
+
+.comment_wrap {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3% 0;
+  background-color: #F5F5F5; 
+}
+
+.inner_wrap {
+  width: 1050px;
+  margin: 0 auto;
+  padding-bottom: 10%;
+
+}
+
+.comment_wrap * {
+  font-family: 'SUIT-Medium';
+  font-size: 1.25rem;
+}
+
+.comment_title {
+  font-size: 1.875rem;
+  color: #00084A;
+  font-family: 'SUIT-SemiBold';
+}
+
+.comment_area {
+  width: 1050px;
+  height: 150px;
+  margin-top: 2%;
+  border: 1px solid #BABABA;
+  padding-left: 2%;
+  padding-top: 2%;
+  /* font-family: 'SUIT-Medium';
+  font-size: 1.25rem; */
+  resize: none;
+  box-sizing: border-box;
+}
+
+.comment_area::placeholder {
+  color: #BABABA;
+
+}
+
+.comment_btn {
+  width: 1050px;
+  height: 60px;
+  border: none;
+  outline: none;
+  background-color: #00084A;
+  color: #FFF;
+  margin-bottom: 3%;
+
+  /* font-family: 'SUIT-Medium';
+  font-size: 1.25rem; */
+}
+
+.comment_user {
+  font-family: 'SUIT-SemiBold';
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.comment_desc {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.comment_time {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: #BABABA;
+}
+
+.comment_list {
+  border-bottom: 2px solid #BABABA;
+  padding: 1.5% 0;
+}
