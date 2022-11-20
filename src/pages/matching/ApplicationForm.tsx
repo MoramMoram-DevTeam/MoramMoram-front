@@ -2,6 +2,7 @@ import React from "react";
 import effect from "../../assets/images/effect.svg";
 import applyicon from "../../assets/images/applyicon.svg";
 import styles from "./ApplicationForm.module.css";
+import ReactGA from "react-ga";
 
 interface AppForm {
     image?: string,
@@ -19,7 +20,13 @@ const ApplicationForm = () => {
 
       <div className={styles.app_btn_wrap}>
         {(appArray as Array<AppForm>).map((item) => 
-          <div className={styles.app_btn}>
+          <div className={styles.app_btn} onClick= {() => {
+            ReactGA.event({
+              category: "Button",
+              action: "go to application form",
+              label: "profile",
+            });
+          }}>
               <img src={item.image} alt="icon"/>
               <div>
                 <div className={styles.app_btn_title}>{item.title}</div>
