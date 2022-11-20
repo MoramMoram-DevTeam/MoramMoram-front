@@ -25,7 +25,7 @@ const Navbar = () => {
         <ul>
           <li><Link to="/app">플리마켓</Link></li>
           <img src={star} className={styles.star} alt="."/>
-          <li><Link to="/community">커뮤니티</Link></li>
+          <li><Link to="/community/list">커뮤니티</Link></li>
           <img src={star} className={styles.star} alt="."/>
           <li>플리마켓 대행</li>
           <img src={star} className={styles.star} alt="."/>

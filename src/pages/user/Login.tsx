@@ -2,15 +2,15 @@ import axios from "axios";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {useSetRecoilState, useRecoilValue} from "recoil";
-import { atkState } from "recoil/atkState";
+import { AtkState } from "recoil/AtkState";
 import setAuthorizationToken from "./setAuthorizationToken";
 
 const Login = () => {
 
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-  const setAtk = useSetRecoilState(atkState);
-  const atk = useRecoilValue(atkState);
+  // const setAtk = useSetRecoilState(AtkState);
+  // const atk = useRecoilValue(AtkState);
   let navigate = useNavigate();
 
   const onEmailHandler = (event:any) => { // id 저장
@@ -31,13 +31,14 @@ const Login = () => {
         pw: pw
       })        
           if(response.data.atk){            
-            setAuthorizationToken(response.data.atk);
             localStorage.setItem('rtk', response.data.rtk);
-            setAtk(response.data.atk);
+            localStorage.setItem('atk', response.data.atk);
+            // setAtk(response.data.atk);
+            setAuthorizationToken(response.data.atk);
             // const token = response.data.atk;
             // setTokenData(token);
             
-            alert(`로그인 성공: atk는 ${atk}`);
+            // alert(`로그인 성공: atk는 ${atk}`);
             navigate('/');
           }
           else {

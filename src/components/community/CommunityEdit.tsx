@@ -12,19 +12,16 @@ interface MyText {
 
 const CommunityEdit = () => {
 
-  const url = 'base_url';
   const location = useLocation();
   const questionBoardId = location.state.questionBoardId;
 
-  const [title, setTitle] = useState(location.state.title);
-  const [note, setNote] = useState(location.state.note);
+  const [title, setTitle] = useState('');
+  const [note, setNote] = useState('');
   const onChangeTitle = (e : React.ChangeEvent<HTMLInputElement>) => {setTitle(e.target.value);}
   const onChangeNote = (e : React.ChangeEvent<HTMLTextAreaElement>) => {setNote(e.target.value);}
-  
-  const img = null;
+
 
   useEffect(() => {
-    console.log(questionBoardId, '&', title, '&', note);
     axios.get(`/questions/${questionBoardId}`)
     .then((res) => {
       setTitle(res.data.result.title);
@@ -34,8 +31,6 @@ const CommunityEdit = () => {
 
   const onSubmitForm = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const atk = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2Y2FuZG9pdEBuYXZlci5jb20iLCJhdXRoIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjY4ODM3NjE0fQ.hJJdVoen8bhxp44rxSWYingne7rDh56ZeABgvX-_9lYmKKR44XqDFqWgkID_nDYoC1A8f1UIP4AtRUR2hiaZiQ';
-    axios.defaults.headers.common['Authorization'] = `Bearer ${atk}`;
     axios.patch(`/questions/${questionBoardId}`, {
       title: title,
       note: note,
@@ -44,7 +39,7 @@ const CommunityEdit = () => {
     .then((res) => {
       if(res.data.isSuccess) {
         alert(res.data.message);
-        window.location.replace(`/community-qna`);
+        window.location.replace(`/community/list`);
       }
       else {
         alert(res.data.message);
@@ -56,7 +51,7 @@ const CommunityEdit = () => {
   }
 
   return (
-    <Common>
+    <Common title="질문게시판">
       
       <form onSubmit={onSubmitForm}>
         <div className={styles.foam_border}>

@@ -1,20 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import './App.css';
 import './reset.css';
 import Footer from './components/common/Footer';
 import Navbar from './components/common/Navbar';
 import Main from 'pages/Main';
 import ApplicationForm from 'pages/matching/ApplicationForm';
-import CommunityDetail from 'pages/community/CommunityDetail';
-import CommunityWriting from 'pages/community/CommunityWriting';
-import CommunityList from 'pages/community/CommunityList';
-import CommunityEdit from 'pages/community/CommunityEdit';
+import CommunityDetail from 'components/community/CommunityDetail';
+import CommunityWriting from 'components/community/CommunityWriting';
+import CommunityList from 'components/community/CommunityList';
+import CommunityEdit from 'components/community/CommunityEdit';
 import Login from 'pages/user/Login';
 import RegistForm from 'pages/user/regist/RegistForm';
 import MRUserSignup from 'pages/user/regist/MRUserSignup';
 import CUserSignup from 'pages/user/regist/CUserSignup';
-import axios from 'axios';
+import "./lib/Refresh";
+import ReactGA from 'react-ga';
+import { createBrowserHistory } from "history";
+import setAuthorizationToken from 'pages/user/setAuthorizationToken';
+
+export const history = createBrowserHistory();
+ReactGA.event({
+  category: 'User',
+  action: 'Created an Account'
+});
+ReactGA.exception({
+  description: 'An error ocurred',
+  fatal: true
+});
+
 
 function App() {
 
@@ -25,7 +39,12 @@ function App() {
   }
 
   useEffect(() => {
-
+      ReactGA.initialize("G-69K8R7DY5S");
+      history.listen((location: any) => {
+        ReactGA.set({ page: location.pathname }); // Update the user's current page
+        ReactGA.pageview(location.pathname); // Record a pageview for the given page
+      });
+      // ReactGA.pageview(window.location.pathname + window.location.search);
   //   try{
   //     let data = {email: "devracoon@naver.com"};
   //     axios.post("/auth/refreshToken" ,JSON.stringify(data), {
@@ -60,9 +79,9 @@ function App() {
         <Route path="/signup/user" element={<MRUserSignup />} />
         <Route path="/signup/user-c" element={<CUserSignup />} />
         <Route path="/app" element={<ApplicationForm />} />
-        <Route path="/community" element={<CommunityList />} />
-        <Route path="/communityEdit/:questionBoardId" element={<CommunityEdit />} />
-        <Route path="/community-qna/:questionBoardId" element={<CommunityDetail />} />
+        <Route path="/community/list" element={<CommunityList />} />
+        <Route path="/community/:questionBoardId/edit" element={<CommunityEdit />} />
+        <Route path="/community/:questionBoardId" element={<CommunityDetail />} />
         <Route path="/community-write" element={<CommunityWriting />} />
 
       </Routes>
