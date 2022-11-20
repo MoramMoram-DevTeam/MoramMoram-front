@@ -74,8 +74,14 @@
 .loginbox > span {
   height: 18px;
   margin: 0 5px;
+}
+
+.loginbox > span > * {
+  color: #FFB600;
+  text-decoration: none;
   line-height: 18px;
   font-size: 1.125rem;
+  height: 18px;
 }
 
 .line {

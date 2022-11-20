@@ -6,6 +6,7 @@ import search from "../../assets/images/search.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  
   return (
     <div className={styles.nav_wrap}>
       <div className={styles.nav_top}>
@@ -15,16 +16,16 @@ const Navbar = () => {
           <img src={search} alt="searchbutton" className={styles.nav_searchbtn} />
         </div>
         <div className={styles.loginbox}>
-          <span>회원가입</span>
+          <span><Link to="/regist">회원가입</Link></span>
           <span className={styles.line}></span>
-          <span>로그인</span>
+          <span><Link to="/login">로그인</Link></span>
         </div>
       </div>
       <div className={styles.nav_bottom}>
         <ul>
           <li><Link to="/app">플리마켓</Link></li>
           <img src={star} className={styles.star} alt="."/>
-          <li><Link to="/community-write">커뮤니티</Link></li>
+          <li><Link to="/community">커뮤니티</Link></li>
           <img src={star} className={styles.star} alt="."/>
           <li>플리마켓 대행</li>
           <img src={star} className={styles.star} alt="."/>

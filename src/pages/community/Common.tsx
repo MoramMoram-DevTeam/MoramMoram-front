@@ -9,7 +9,7 @@ type WrapProps = {
 const Common = (props: WrapProps) => {
   return (
     <div className="wrap">
-        <div className="title">정보게시판<img src={effect} alt="*" /></div>
+        <div className="title">질문게시판<img src={effect} alt="*" /></div>
         <div>{props.children}</div>
     </div>
   )

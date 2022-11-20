@@ -46,7 +46,10 @@
   display: flex;
   justify-content: space-between;  
   align-items: center;
+  margin-bottom: 50px;
 }
+
+
 
 .file_btn {
   width: 180px;
@@ -56,6 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .file_btn img {

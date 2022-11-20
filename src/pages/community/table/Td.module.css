@@ -1,0 +1,13 @@
+td {
+  cursor: pointer;
+  padding: 20px 10px;
+  border-top: 1px solid #EEE;
+  font-family: 'SUIT-Regular';
+  font-size: 1.125rem;
+  color: #222222;
+  text-align: center;
+}
+
+.td_title {
+  text-align: left;
+}
