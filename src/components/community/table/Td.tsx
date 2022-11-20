@@ -9,12 +9,7 @@ const Td = ({item}:any) => {
   const navigate = useNavigate();
 
   const onClickTr = () => {
-    ReactGA.event({
-      category: "Button",
-      action: "go to other's article",
-      label: "profile",
-    });
-    navigate(`/community-qna/${item.questionBoardId}`,{
+    navigate(`/community/${item.questionBoardId}`,{
       state: {
         questionBoardId: item.questionBoardId
       }

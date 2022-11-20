@@ -4,7 +4,6 @@ import plus from "../../assets/images/plus.svg";
 import Common from "./Common";
 import axios from "axios";
 import {useRecoilValue} from "recoil";
-import {atkState} from "recoil/atkState"
 import { timeLog } from "console";
 // import axios from "axios";
 
@@ -77,7 +76,7 @@ const CommunityWriting = () => {
   }  
 
   return (
-    <Common>
+    <Common title="질문게시판">
       
       <form onSubmit={onSubmitForm}>
         <div className={styles.foam_border}>

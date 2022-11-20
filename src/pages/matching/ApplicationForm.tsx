@@ -5,12 +5,13 @@ import styles from "./ApplicationForm.module.css";
 import ReactGA from "react-ga";
 
 interface AppForm {
+    id: number,
     image?: string,
     title: string
 }
 
-const appArray:AppForm[] = [{image: applyicon, title: "신청서 작성 바로가기"},
-{image: applyicon, title: "신청 결과 바로가기"}]
+const appArray:AppForm[] = [{id: 1, image: applyicon, title: "신청서 작성 바로가기"},
+{id: 2, image: applyicon, title: "신청 결과 바로가기"}]
 
 const ApplicationForm = () => {
   return (
@@ -26,7 +27,7 @@ const ApplicationForm = () => {
               action: "go to application form",
               label: "profile",
             });
-          }}>
+          }} key={item.id}>
               <img src={item.image} alt="icon"/>
               <div>
                 <div className={styles.app_btn_title}>{item.title}</div>
