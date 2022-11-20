@@ -9,10 +9,7 @@ axios.interceptors.response.use(
    const originalConfig = error.config;
    if(error.response){
     if (error.response.status === 401) {
-      
-      // if (!isTokenRefreshing) {
-      //   // isTokenRefreshing이 false인 경우에만 token refresh 요청
-      //   isTokenRefreshing = true;
+
     const refreshToken = localStorage.getItem("rtk");
 
         // 토큰이 만료되었고, refreshToken 이 저장되어 있을 때
@@ -21,21 +18,16 @@ axios.interceptors.response.use(
           headers: {
             'REFRESH_TOKEN': refreshToken
           },
-          withCredentials: true
+          
         });
 
         const token = res.data.atk;
         console.log('new token:',token);
         
-        // const [accessToken, setAccessToken] = useRecoilState(AtkState);
-        // setAccessToken(token);
-        // isTokenRefreshing = false;
         localStorage.setItem('atk', token);
         setAuthorizationToken(token);
         error.config.headers.Authorization = `Bearer ${token}`;
-        // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        // onTokenRefreshed(token);
-        console.log('여기까진 되나?');
+        
         return axios(originalConfig);
       }
     }
