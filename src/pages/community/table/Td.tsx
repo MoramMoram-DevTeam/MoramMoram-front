@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from "./Td.module.css";
+import ReactGA from "react-ga";
 
 
 const Td = ({item}:any) => {
@@ -8,6 +9,11 @@ const Td = ({item}:any) => {
   const navigate = useNavigate();
 
   const onClickTr = () => {
+    ReactGA.event({
+      category: "Button",
+      action: "go to other's article",
+      label: "profile",
+    });
     navigate(`/community-qna/${item.questionBoardId}`,{
       state: {
         questionBoardId: item.questionBoardId
