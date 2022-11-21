@@ -31,6 +31,9 @@
   font-family: 'SUIT-Medium';
   font-size: 1.438rem;
   color: #222222;
-  padding: 20px 22%;
+  padding: 25px;
+  height: 40px;
+  display: flex;
+  align-items: center;
   line-height: 2rem;
 }

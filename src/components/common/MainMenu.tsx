@@ -1,14 +1,18 @@
 import React from "react";
-import calendaricon from "../../assets/images/calendaricon.svg";
 import styles from "./MainMenu.module.css";
 
-const MainMenu = () => {
+interface MenuInfo {
+  title: string;
+  image: string;
+}
+
+const MainMenu = ({title, image}:MenuInfo) => {
   return (
     <div className={styles.app_btn}>
       <div>
-        <img src={calendaricon} alt="logo" />
+        <img src={image} alt="logo" />
         <div className={styles.fl_title}>
-          플리마켓 일정 캘린더 바로가기
+          {title}
         </div> 
         <div className={styles.direct_btn}></div>
       </div>           
