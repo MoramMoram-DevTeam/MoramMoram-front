@@ -18,6 +18,8 @@ import "./lib/Refresh";
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from "history";
 import setAuthorizationToken from 'pages/user/setAuthorizationToken';
+import FleaMarketList from 'components/fleamarket/FleaMarketList';
+import FleaMarketDetail from 'components/fleamarket/FleaMarketDetail';
 
 export const history = createBrowserHistory();
 ReactGA.event({
@@ -44,29 +46,6 @@ function App() {
         ReactGA.set({ page: location.pathname }); // Update the user's current page
         ReactGA.pageview(location.pathname); // Record a pageview for the given page
       });
-      // ReactGA.pageview(window.location.pathname + window.location.search);
-  //   try{
-  //     let data = {email: "devracoon@naver.com"};
-  //     axios.post("/auth/refreshToken" ,JSON.stringify(data), {
-  //         headers: {
-  //           "Content-Type": `application/json`,
-  //         }})
-  //     .then(res =>{
-  //         console.log("res.data.accessToken : " + res.data);
-  //         axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data;
-  //         setIsLogin(true);
-          
-  //     })
-  //     .catch(ex=>{
-  //         console.log("app silent requset fail : " + ex);
-  //     })
-  //     .finally(()=>{
-  //       console.log("login request end");
-  //       setLoading(true);
-  //     });
-  // }catch(e){
-  //     console.log(e);
-  // }
 },[]);
 
   return (
@@ -74,6 +53,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
+
+        <Route path="/fleamarket" element={<FleaMarketList />} />
+        <Route path="/fleamarket/:id" element={<FleaMarketDetail />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<RegistForm />} />
         <Route path="/signup/user" element={<MRUserSignup />} />

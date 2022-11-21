@@ -1,0 +1,155 @@
+.detail_wrap {
+  background-color: #F5F5F5;
+  padding: 6% 156px 3% 156px;
+}
+
+.title {
+  font-family: 'SUIT-SemiBold';
+  color: #0C205E;
+  font-size: 2.25rem;
+  margin-bottom: 3%;
+}
+
+.title img {
+  margin-left: 3px;
+  vertical-align: top;
+}
+
+.top {
+  margin: 0 auto;
+  width: 936px;
+  height: 353px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pic {
+  width: 433px;
+  height: 300px;
+  margin-right: 5%;
+}
+
+.start {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #FFB600;
+  color: #FFB600;
+  font-family: 'SUIT-Medium';
+  font-size: 1.125rem;
+  border-radius: 20px;
+  margin-bottom: 8%;
+}
+
+.mname {
+  font-family: 'SUIT-Medium';
+  font-size: 1.563rem;
+}
+
+.place {
+  font-family: 'SUIT-Regular';
+  font-size: 1.125rem;
+  color: #BDBDBD;
+  margin: 3% 0 6% 0;
+}
+
+.info {
+  font-family: 'SUIT-Regular';
+  font-size: 1.125rem;
+  margin: 3% 0;
+}
+
+.apply_btn {
+  width: 386px;
+  height: 49px;
+  background-color: #FFCB1D;
+  border: 2px solid #00084A;
+  font-family: 'SUIT-Medium';
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8%;
+  cursor: pointer;
+}
+
+/* 하단부 */
+.bottom {
+  margin: 3% auto;
+  width: 936px;
+  height: 912px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  padding: 3%;
+  box-sizing: border-box;
+}
+
+.bottom_title_box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  padding-bottom: 3%;
+  border-bottom: 2px solid #0C205E;
+  
+}
+
+.bottom_title {
+  font-size: 1.563rem;
+  font-family: 'SUIT-SemiBold';
+
+}
+
+.like_btn {
+  width: 120px;
+  height: 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.25rem;
+  font-family: 'SUIT-Medium';
+  color: #00084A;
+  border: 2px solid #00084A;
+  cursor: pointer;
+}
+
+.desc {
+  padding: 8% 5%;
+}
+
+.desc_info {
+  font-family: 'SUIT-Regular';
+  font-size: 1.125rem;
+  margin: 5% 0;
+  line-height: 1.75rem;
+}
+
+.desc_title {
+  margin: 2% 0;
+  font-family: 'SUIT-SemiBold';
+  font-size: 1.25rem;
+}
+
+.desc_title img {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.line {
+  width: 100%;
+  height: 0.5px;
+  background-color: #BABABA;
+}
+
+.desc_note {
+  padding-left: 2%;
+}
