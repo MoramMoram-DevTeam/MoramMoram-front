@@ -61,8 +61,7 @@ const MarketFrame = ({info}:InfoProps) => {
   const dateArr:Array<string> = info.end.split('-');
   const navigate = useNavigate();
 
-  const onClickMarket = () => {
-    window.scrollTo(0, 0);
+  const onClickMarket = () => {    
     navigate(`/fleamarket/${info.id}`, {
       state: {
         id: info.id

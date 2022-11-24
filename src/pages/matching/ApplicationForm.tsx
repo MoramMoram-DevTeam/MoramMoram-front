@@ -1,6 +1,6 @@
 import React from "react";
 import effect from "../../assets/images/effect.svg";
-import applyicon from "../../assets/images/applyicon.svg";
+import applyicon from "../../assets/images/main/mainmenu/applyicon.svg";
 import styles from "./ApplicationForm.module.css";
 import ReactGA from "react-ga";
 

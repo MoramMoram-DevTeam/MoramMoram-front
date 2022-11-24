@@ -4,6 +4,8 @@ import { FleaInfo } from "./FleaMarketList";
 import styled from "styled-components";
 import { Frame, MarketImg, MarketTitle, MarketAddress, Deadline } from "./MarketFrame";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { NameState } from "recoil/NameState";
 
 const InfiFrame = styled.div`
   width: 1128px;
@@ -18,7 +20,7 @@ const InfiFrame = styled.div`
 const InfiniteFleaList = () => {
   const navigate = useNavigate();
   const [infoArr, setInfoArr] = useState<FleaInfo[] | undefined>([]);
-
+  const MRName = useRecoilValue(NameState);
   const observerRef = useRef<IntersectionObserver>();
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +37,7 @@ const InfiniteFleaList = () => {
   
 
   useEffect(() => {
+    console.log('MRName: ',MRName);
     getTotalLists();
   }, [])
 
@@ -61,6 +64,7 @@ const InfiniteFleaList = () => {
           return (
 
             <Frame ref={boxRef} key={idx} onClick={() => {
+              window.scrollTo(0, 0);
               navigate(`/fleamarket/${info.id}`, {
                 state: {
                   id: info.id
@@ -76,6 +80,7 @@ const InfiniteFleaList = () => {
         } else {
           return (
             <Frame key={idx} onClick={() => {
+              window.scrollTo(0, 0);
               navigate(`/fleamarket/${info.id}`, {
                 state: {
                   id: info.id

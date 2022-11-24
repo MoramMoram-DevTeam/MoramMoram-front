@@ -23,8 +23,8 @@
 
   width: 563px;
   height: 50px;
-  margin-left: 4.8%;
-  margin-right: 7.2%;
+  /* margin-left: 4.8%; */
+  /* margin-right: 7.2%; */
   border: 1.5px solid #FFB600;
   color: white;
   border-radius: 10px;
@@ -66,9 +66,9 @@
 
 .loginbox {
   color: #FFB600;
-  text-align: center;
+  width: 173px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .loginbox > span {
@@ -77,6 +77,33 @@
 }
 
 .loginbox > span > * {
+  color: #FFB600;
+  text-decoration: none;
+  line-height: 18px;
+  font-size: 1.125rem;
+  height: 18px;
+}
+
+.logoutbox {
+  color: #FFB600;
+  
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.logoutbox > span {
+  
+  height: 18px;
+  margin: 0 5px;
+  color: #FFB600;
+  text-decoration: none;
+  line-height: 18px;
+  font-size: 1.125rem;
+  height: 18px;
+}
+
+.logoutbox > span > * {
   color: #FFB600;
   text-decoration: none;
   line-height: 18px;

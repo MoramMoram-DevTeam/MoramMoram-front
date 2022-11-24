@@ -55,7 +55,6 @@ html,body{ overflow-x: hidden; }
 }
 
 .hotplace_bar {
-  border: 1px solid red;
   height: 350px;
   margin-bottom: 50px;
   
@@ -67,4 +66,15 @@ html,body{ overflow-x: hidden; }
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 24px;
   margin: 2% auto 0 auto;
+}
+
+.hotp_pic {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.hotp {
+  
+  margin-right: 22px;
 }

@@ -1,19 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from "./Td.module.css";
-import ReactGA from "react-ga";
 
 
-const Td = ({item}:any) => {
+
+const Td = ({item, url}:any) => {
 
   const navigate = useNavigate();
 
   const onClickTr = () => {
-    navigate(`/community/${item.questionBoardId}`,{
-      state: {
-        questionBoardId: item.questionBoardId
-      }
-    });
+    // navigate(`/community/${url}/${item.questionBoardId}`,{
+    //   state: {
+    //     url: url,
+    //     questionBoardId: item.questionBoardId
+    //   }
+    // });
   }
     return (
         <>
