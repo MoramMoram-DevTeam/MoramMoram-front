@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import React, {useState, useEffect, useRef} from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import fleaPic from "../../assets/images/fleaPic.svg";
 import styles from "./FleaMarketDetail.module.css";
 import effect from "../../assets/images/effect.svg";
@@ -8,12 +8,15 @@ import star from "../../assets/images/star.svg";
 import like from "../../assets/images/redlike.svg";
 
 const FleaMarketDetail = () => {
-
+  const navigate = useNavigate();
   const pr:any = useParams().id;
   const [fleaDetail, setFleaDetail] = useState<any>([]);
+  const detailRef = useRef<HTMLDivElement>(null);
+
   
     
   const getLists = async () => {
+
     await axios.get('/markets/',{
       params: {m_id: pr}
     })
@@ -26,6 +29,7 @@ const FleaMarketDetail = () => {
   }
 
   useEffect(() => {
+    detailRef.current?.scrollIntoView();
     getLists();
 }, []);
 
@@ -42,9 +46,13 @@ const FleaMarketDetail = () => {
     })
   }
 
+  const onClickApply = () => {
+    navigate('/fleamarket/apply/1');
+  }
+
   return (
     
-      <div className={styles.detail_wrap}>
+      <div className={styles.detail_wrap} ref={detailRef}>
         <div className={styles.title}>플리마켓 상세 정보<img src={effect} alt="*" /></div>
         
         {fleaDetail && 
@@ -57,7 +65,7 @@ const FleaMarketDetail = () => {
             <div className={styles.place}>{fleaDetail.place}</div>
             <div className={styles.info}>행사 종료일: {fleaDetail.end}</div>
             <div className={styles.info}>카테고리: {fleaDetail.category}</div>
-            <div className={styles.apply_btn}>참가 신청</div>
+            <div className={styles.apply_btn} onClick={onClickApply}>참가 신청</div>
           </div>
         </div>
         

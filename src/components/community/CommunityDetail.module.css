@@ -79,6 +79,20 @@
   margin: 2px;
 }
 
+.line {
+  vertical-align: sub;
+  width: 2px;
+  height: 16px;
+  background-color:#CBCBCB;
+}
+
+.icon {
+  
+  vertical-align: middle;
+  padding-bottom: 2px;
+  margin-right: 2px;
+}
+
 .board_desc {
   margin-top: 2%;
   border-top: 0.5px solid #BABABA;
@@ -108,12 +122,29 @@
 
   font-size: 1.25rem;
   font-family: 'SUIT-Medium';
-  color: #00084A;
-  border: 2px solid #00084A;
+  color: #BABABA;
+  border: 2px solid #BABABA;
   cursor: pointer;
 }
 
+.like_btn:hover {
+  color: #00084A;
+  border: 2px solid #00084A;
+}
+
+
+.like_btn * {  
+  transition: transform 200ms ease;
+  
+}
+
+.like_btn *:hover {
+  transform: scale(1.1);
+}
+
+
 .report_btn {
+  
   width: 152px;
   height: 49px;
   box-sizing: border-box;
@@ -180,6 +211,7 @@
   background-color: #00084A;
   color: #FFF;
   margin-bottom: 3%;
+  cursor: pointer;
 
   /* font-family: 'SUIT-Medium';
   font-size: 1.25rem; */

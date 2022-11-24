@@ -7,9 +7,8 @@ import {useRecoilValue} from "recoil";
 import { timeLog } from "console";
 // import axios from "axios";
 
-const CommunityWriting = () => {
+const CommunityWriting = ({url}:any) => {
 
-  const url = 'BASE_URL';
 
   const [title, setTitle] = useState<string>('');
   const [note, setNote] = useState<string>('');
@@ -30,6 +29,7 @@ const CommunityWriting = () => {
   }
 
   const handleFileUpload =(e:React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     const fileArr:any = e.target.files;
     let nameArr:Array<string> = [];
     let fileURLs:Array<any> = [];
@@ -56,7 +56,7 @@ const CommunityWriting = () => {
     e.preventDefault();
     
     try{
-      const response = await axios.post('/questions', {
+      const response = await axios.post(`/${url}`, {
       title: title,
       note: note,
       img: sendFiles === null ? null : sendFiles
@@ -64,19 +64,23 @@ const CommunityWriting = () => {
     
       if(response.data.isSuccess) {
         alert(response.data.message);
+        window.location.replace('/community/tips');
       }
       else {
-        alert(response.data.message);
+        if(response.data.status === "NO_AUTHORITY")
+          alert(response.data.message);
+
       }    
-      e.preventDefault();
+      
   } catch(err) {
-      alert("전송 실패: " + err)
+      alert("글을 등록하지 못했습니다.");
+      console.log(err);
     }
 
   }  
 
   return (
-    <Common title="질문게시판">
+    <div>
       
       <form onSubmit={onSubmitForm}>
         <div className={styles.foam_border}>
@@ -117,7 +121,7 @@ const CommunityWriting = () => {
           </div>
         </div>
       </form>
-    </Common>
+    </div>
   )
 
 }

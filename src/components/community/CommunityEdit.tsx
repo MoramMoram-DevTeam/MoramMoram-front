@@ -4,12 +4,6 @@ import { useLocation } from "react-router-dom";
 import Common from "./Common";
 import styles from "./CommunityWriting.module.css";
 
-interface MyText {
-  title: string,
-  note: string,
-  img: string;
-}
-
 const CommunityEdit = () => {
 
   const location = useLocation();

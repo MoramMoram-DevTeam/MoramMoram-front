@@ -1,6 +1,9 @@
 import axios from "axios";
 import Common from "components/community/Common";
 import React, {useState} from "react";
+import { useSetRecoilState } from "recoil";
+import { NameState } from "recoil/NameState";
+import setAuthorizationToken from "../setAuthorizationToken";
 import styles from "./Signup.module.css";
 
 const MRUserSignup = () => {
@@ -12,6 +15,8 @@ const MRUserSignup = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [pnum, setPnum] = useState<string>("");
   const [cnum, setCnum] = useState<string>("");
+
+  const setMRName = useSetRecoilState(NameState);
 
   const onNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.currentTarget.value)
@@ -45,11 +50,15 @@ const MRUserSignup = () => {
         name: name,
         pw: password,
         pnum: pnum,
-        uimg: "",
-        maketing: false
+        uimg: "http://qqqwwwweeee",
+        marketing: false
       })
         if(response.data.atk) {
            alert('회원가입이 완료되었습니다.');
+           localStorage.setItem('rtk', response.data.rtk);
+           localStorage.setItem('atk', response.data.atk);
+           setAuthorizationToken(response.data.atk);
+           setMRName(response.data.name);
         }
         else
           alert('회원가입에 실패하였습니다.');          
@@ -61,7 +70,7 @@ const MRUserSignup = () => {
 
   return (
     <Common title="개인회원가입">
-      
+      <div className={styles.inner}>
       <form onSubmit={handleSubmit}>
             <div className={styles.box}>
               <div className={styles.title}>이름</div><input name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} className={styles.input_join}/>
@@ -93,12 +102,15 @@ const MRUserSignup = () => {
               <div className={styles.title}>사업자 등록번호 (선택)</div>
               <input name="pnum" type="text" placeholder="-을 포함하여 입력해주세요." value={cnum} onChange={onCnumHandler}className={styles.input_join} />
             </div>
-            <div><label><input type="checkbox" name="xxx" value="personal" />{'['}필수{']'} 모람모람 이용 약관 및 개인정보 수집에 동의합니다.</label></div>
-            <div><label><input type="checkbox" name="xxx" value="marketing" />{'['}선택{']'} 서비스와 관련된 광고와 마케팅 메세지를 받겠습니다.</label></div>
+            <div className={styles.box}>
+              <div><label><input type="checkbox" name="personal" value="personal" />{'['}필수{']'} 모람모람 이용 약관 및 개인정보 수집에 동의합니다.</label></div>
+              <div><label><input type="checkbox" name="marketing" value="marketing" />{'['}선택{']'} 서비스와 관련된 광고와 마케팅 메세지를 받겠습니다.</label></div>
+            </div>
             <div className={styles.box}>
               <button type="submit" className={styles.submitbtn}>가입하기</button>
             </div>
         </form>
+      </div>
     </Common>
   )
 }

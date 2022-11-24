@@ -20,6 +20,18 @@ import { createBrowserHistory } from "history";
 import setAuthorizationToken from 'pages/user/setAuthorizationToken';
 import FleaMarketList from 'components/fleamarket/FleaMarketList';
 import FleaMarketDetail from 'components/fleamarket/FleaMarketDetail';
+import AppFormWrite1 from 'components/matching/AppFormWrite1';
+import AppFormWrite2 from 'components/matching/AppFormWrite2';
+import AppFormWrite3 from 'components/matching/AppFormWrite3';
+import QnaComuList from 'pages/community/qna/QnaCommuList';
+import QnaCommuDetail from 'pages/community/qna/QnaCommuDetail';
+import QnaCommuWrite from 'pages/community/qna/QnaCommuWrite';
+import QnaCommuEdit from 'pages/community/qna/QnaCommuEdit';
+import TipsCommuList from 'pages/community/tips/TipsCommuList';
+import TipsCommuDetail from 'pages/community/tips/TipsCommuDetail';
+import TipsCommuEdit from 'pages/community/tips/TipsCommuEdit';
+import TipsCommuWrite from 'pages/community/tips/TipsCommuWrite';
+import AppFormWrite4 from 'components/matching/AppFormWrite4';
 
 export const history = createBrowserHistory();
 ReactGA.event({
@@ -49,7 +61,7 @@ function App() {
 },[]);
 
   return (
-    <BrowserRouter>
+    <div>
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -57,19 +69,30 @@ function App() {
         <Route path="/fleamarket" element={<FleaMarketList />} />
         <Route path="/fleamarket/:id" element={<FleaMarketDetail />} />
 
+        <Route path="/fleamarket/apply/1" element={<AppFormWrite1 />} />
+        <Route path="/fleamarket/apply/2" element={<AppFormWrite2 />} />
+        <Route path="/fleamarket/apply/3" element={<AppFormWrite3 />} />
+        <Route path="/fleamarket/apply/4" element={<AppFormWrite4 />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<RegistForm />} />
         <Route path="/signup/user" element={<MRUserSignup />} />
         <Route path="/signup/user-c" element={<CUserSignup />} />
         <Route path="/app" element={<ApplicationForm />} />
-        <Route path="/community/list" element={<CommunityList />} />
-        <Route path="/community/:questionBoardId/edit" element={<CommunityEdit />} />
-        <Route path="/community/:questionBoardId" element={<CommunityDetail />} />
-        <Route path="/community-write" element={<CommunityWriting />} />
+
+        <Route path="/community/questions" element={<QnaComuList />} />
+        <Route path="/community/questions/:questionBoardId" element={<QnaCommuDetail />} />
+        <Route path="/community/questions/:questionBoardId/edit" element={<QnaCommuEdit />} />
+        <Route path="/community/questions/write" element={<QnaCommuWrite />} />
+
+        <Route path="/community/tips" element={<TipsCommuList />} />
+        <Route path="/community/tips/:tipBoardId" element={<TipsCommuDetail />} />
+        <Route path="/community/tips/:tipBoardId/edit" element={<TipsCommuEdit />} />
+        <Route path="/community/tips/write" element={<TipsCommuWrite />} />
 
       </Routes>
       <Footer />
-      </BrowserRouter>
+      </div>
   );
 }
 

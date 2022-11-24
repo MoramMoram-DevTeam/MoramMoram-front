@@ -8,7 +8,11 @@ interface MenuInfo {
 
 const MainMenu = ({title, image}:MenuInfo) => {
   return (
-    <div className={styles.app_btn}>
+    <div className={styles.app_btn} onClick={() => {
+      
+    window.scrollTo(0,0);
+    //alert('z');
+    }}>
       <div>
         <img src={image} alt="logo" />
         <div className={styles.fl_title}>

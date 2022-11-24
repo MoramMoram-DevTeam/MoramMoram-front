@@ -1,31 +1,13 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
-import Common from "./Common";
+import React, {useState} from "react";
 import styles from "./CommunityList.module.css";
 import Tr from "./table/Tr";
-import pencil from "../../assets/images/pencil.svg";
-import axios from "axios";
 
-const CommunityList = () => {
-  const [lists, setLists] = useState<Array<any>>([]);
+const CommunityList = (lists: any, url:string) => {
+  // const [lists, setLists] = useState<Array<any>>(comu);
 
-  const getQnaLists = async () => {
-    await axios.get('/questions/list',{
-      params: {page: 0}
-    })
-    .then((res) => {
-      setLists(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-
-  useEffect(() => {
-    getQnaLists();
-  }, []);
 
   return (
-    <Common title="질문게시판">
+    <div>
       <div className={styles.wrap}>
       <table>
         <thead>
@@ -36,19 +18,11 @@ const CommunityList = () => {
             <th>조회수</th>
           </tr>
         </thead>
-        <Tr lists={lists}/>
-      </table>
-      </div>
-
-      <div className={styles.under_btn}>
-        <Link to="/community-write" className={styles.write_btn}>
-          <img src={pencil} alt="pencil" />
-          <span >새글쓰기</span>
-        </Link>
-      </div>
         
-      
-    </Common>
+        {lists && <Tr lists={lists} url={url}/> }
+      </table>
+      </div>      
+    </div>
   )
 }
 

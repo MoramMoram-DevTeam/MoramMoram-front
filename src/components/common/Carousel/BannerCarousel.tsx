@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./BannerSlick.css";
-import banner from "../../../assets/images/banner.svg";
+import banner from "../../../assets/images/main/banner.svg";
 
 const BNSlider = styled(Slider)`
   width: 100%;

@@ -1,9 +1,12 @@
 import axios from "axios";
 import Common from "components/community/Common";
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import setAuthorizationToken from "../setAuthorizationToken";
 import styles from "./Signup.module.css";
 
 const CUserSignup = () => {
+  const navigate = useNavigate();
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -12,6 +15,8 @@ const CUserSignup = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [pnum, setPnum] = useState<string>("");
   const [cnum, setCnum] = useState<string>("");
+  // const [cname, setCname] = useState<string>("");
+  const [hostCname, setHostCname] = useState<string>("");
 
   const onNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.currentTarget.value)
@@ -33,8 +38,16 @@ const CUserSignup = () => {
     setPnum(event.currentTarget.value)
   }
 
+  // const onCnameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setCname(event.currentTarget.value)
+  // }
+
   const onCnumHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCnum(event.currentTarget.value)
+  }
+
+  const onHostCnameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHostCname(event.currentTarget.value)
   }
 
   
@@ -47,23 +60,28 @@ const CUserSignup = () => {
         pw: password,
         pnum: pnum,
         uimg: "",
-        maketing: false
+        marketing: false
       })
         if(response.data.atk) {
            alert('회원가입이 완료되었습니다.');
+           localStorage.setItem('rtk', response.data.rtk);
+            localStorage.setItem('atk', response.data.atk);
+            setAuthorizationToken(response.data.atk);
+            navigate('/');
         }
         else
-          alert('회원가입에 실패하였습니다.');          
+          alert('회원가입에 실패하였습니다.');
+         
       
-    } catch (err) {
-      console.log("Join Error >>", err);
+    } catch (err:any) {
+      alert(err.response.data.statusMessage);
     }
   };
 
 
   return (
     <Common title="기업회원가입">
-      
+      <div className={styles.inner}>
       <form onSubmit={handleSubmit}>
             <div className={styles.box}>
               <h3>이름</h3><input name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} className={styles.input_join}/>
@@ -92,24 +110,26 @@ const CUserSignup = () => {
               <h3>프로필 사진</h3>
               <input name="profile" type="file" />
             </div>
+            {/* <div className={styles.box}>
+              <h3>사업자명</h3>
+              <input name="cname" type="text" value={cname} onChange={onCnameHandler}className={styles.input_join} />
+            </div> */}
             <div className={styles.box}>
               <h3>사업자명</h3>
-              <input name="pnum" type="text" value={cnum} onChange={onCnumHandler}className={styles.input_join} />
+              <input name="cnum" type="text" placeholder="-을 포함하여 입력해주세요." value={cnum} onChange={onCnumHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
               <h3>사업자 등록번호</h3>
-              <input name="pnum" type="text" placeholder="-을 포함하여 입력해주세요." value={cnum} onChange={onCnumHandler}className={styles.input_join} />
+              <input name="hostCnum" type="text" value={hostCname} onChange={onHostCnameHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
-              <h3>주관 업체명</h3>
-              <input name="pnum" type="text" value={cnum} onChange={onCnumHandler}className={styles.input_join} />
+              <div><label><input type="checkbox" name="xxx" value="personal" />{'['}필수{']'} 모람모람 이용 약관 및 개인정보 수집에 동의합니다.</label></div>
+              <div><label><input type="checkbox" name="xxx" value="marketing" />{'['}선택{']'} 서비스와 관련된 광고와 마케팅 메세지를 받겠습니다.</label></div>
             </div>
-            <div><label><input type="checkbox" name="xxx" value="personal" />{'['}필수{']'} 모람모람 이용 약관 및 개인정보 수집에 동의합니다.</label></div>
-            <div><label><input type="checkbox" name="xxx" value="marketing" />{'['}선택{']'} 서비스와 관련된 광고와 마케팅 메세지를 받겠습니다.</label></div>
             <div className={styles.box}>
               <button type="submit" className={styles.submitbtn}>가입하기</button>
             </div>
-        </form>
+        </form></div>
         </Common>
    
   )

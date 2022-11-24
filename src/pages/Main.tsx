@@ -1,16 +1,47 @@
 import React from "react";
 import styles from "./Main.module.css";
 
-import awning from "../assets/images/awning.svg";
-import menubtn from "../assets/images/menubtn.svg";
-import fire from "../assets/images/fire.svg";
-import speaker from "../assets/images/speaker.svg";
+import awning from "../assets/images/main/awning.svg";
+import menubtn from "../assets/images/main/icons/menubtn.svg";
+import fire from "../assets/images/main/icons/fire.svg";
+import speaker from "../assets/images/main/icons/speaker.svg";
+
+
+import hotp1 from "../assets/images/main/hotp1.svg";
+import hotp2 from "../assets/images/main/hotp2.svg";
+
 import BannerCarousel from "components/common/Carousel/BannerCarousel";
-import Slick from "components/common/Carousel/Slick";
+
 import Item from "components/common/Carousel/Item";
 import MainMenu from "components/common/MainMenu";
 
+import calendaricon from "../assets/images/main/mainmenu/calendaricon.svg";
+import promotionicon from "../assets/images/main/mainmenu/promotionicon.svg";
+import applyicon from "../assets/images/main/mainmenu/applyicon.svg";
+import mapicon from "../assets/images/main/mainmenu/mapicon.svg";
+import HotFrame from "components/common/HotFrame";
+
 const Main = () => {
+
+  const menu = [{
+    title: "플리마켓 일정 확인",
+    image: calendaricon
+  },
+  {
+    title: "프로모션 / 모집",
+    image: promotionicon
+  },
+  {
+    title: "플리마켓 추천",
+    image: mapicon
+  },
+  {
+    title: "신청서 작성",
+    image: applyicon
+  },
+
+]
+
   return (
     <div className={styles.main_wrap}>
       {/* 배너 */}
@@ -31,10 +62,8 @@ const Main = () => {
         </div>
         
         <div className={styles.menu_box}>
-          <MainMenu />
-          <MainMenu />
-          <MainMenu />
-          <MainMenu />
+          {menu.map((item, idx) => (<MainMenu title={item.title} image={item.image} key={idx}/>))}
+
         </div>
       </div>
 
@@ -45,8 +74,11 @@ const Main = () => {
             <span className={styles.title}>요즘 뜨는 HOT PLACE</span>
             <img src={fire} alt="fire" style={{verticalAlign: "sub"}}/>
           </div>
-          <div>
+          <div className={styles.hotp_pic}>
             {/* 컴포넌트들 => 슬라이드 */}
+           <img src={hotp1} alt="hotp1" className={styles.hotp}/>
+           <img src={hotp2} alt="hotp2"/>
+            
             
           </div>
         </div>
@@ -57,10 +89,10 @@ const Main = () => {
             <img src={speaker} alt="speaker"/>
           </div>
           <div style={{marginLeft: "10%"}}>
-            <Item />
+            <Item title="셀러 후기"/>
           </div>
           <div style={{marginLeft: "10%"}}>
-            <Item />
+            <Item title="주최 후기" />
           </div>
         </div>
 

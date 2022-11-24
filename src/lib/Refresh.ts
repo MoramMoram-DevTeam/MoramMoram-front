@@ -14,19 +14,29 @@ axios.interceptors.response.use(
 
         // 토큰이 만료되었고, refreshToken 이 저장되어 있을 때
         // 토큰 갱신 서버통신
-        const res = await axios.get('/app', {
+        await axios.get('/app', {
           headers: {
             'REFRESH_TOKEN': refreshToken
           },
           
-        });
+        })
+        .then((res) => {
+            const token = res.data.atk;
+          console.log('new token:',token);
+          
+          localStorage.setItem('atk', token);
+          setAuthorizationToken(token);
+          error.config.headers.Authorization = `Bearer ${token}`;
+        })
+        .catch((err) => {
+          if(err.response.status === 410){
+            localStorage.removeItem('rtk');
+            localStorage.removeItem('atk');
+            window.location.replace('/');
+          }
+        })
 
-        const token = res.data.atk;
-        console.log('new token:',token);
         
-        localStorage.setItem('atk', token);
-        setAuthorizationToken(token);
-        error.config.headers.Authorization = `Bearer ${token}`;
         
         return axios(originalConfig);
       }
