@@ -64,7 +64,7 @@ const Navbar = () => {
           <img src={star} className={styles.star} alt="."/>
           <li><Link to="/community/questions">커뮤니티</Link></li>
           <img src={star} className={styles.star} alt="."/>
-          <li><Link to="/">플리마켓 대행</Link></li>
+          <li><Link to="/community/tips">플리마켓 대행</Link></li>
           <img src={star} className={styles.star} alt="."/>
           <li>공지사항</li>
         </ul>

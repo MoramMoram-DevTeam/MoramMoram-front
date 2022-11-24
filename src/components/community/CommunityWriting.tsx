@@ -54,17 +54,21 @@ const CommunityWriting = ({url}:any) => {
 
   const onSubmitForm = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    
-    try{
-      const response = await axios.post(`/${url}`, {
+    const data = {
       title: title,
-      note: note,
-      img: sendFiles === null ? null : sendFiles
+      note: note
+    };
+    let formData = new FormData();
+		formData.append('file', null);
+		formData.append('data', new Blob([JSON.stringify(data)] , {type: "application/json"}));
+    try{
+      const response = await axios.post(`/${url}`, formData, {
+        headers: { "Content-Type": `multipart/form-data`}
       })
     
       if(response.data.isSuccess) {
         alert(response.data.message);
-        window.location.replace('/community/tips');
+        window.location.replace('/community/questions');
       }
       else {
         if(response.data.status === "NO_AUTHORITY")

@@ -11,9 +11,9 @@ const Tr = ({lists}:any) => {
     return (
       
         
-          lists.url === "tips"
-          ?
-          <div>tips</div>
+          // lists.url === "tips"
+          // ?
+          // <div>tips</div>
           // lists.lists.result &&
           // <div>{lists.lists.result[0].name}</div> 
         //   lists.lists.result.map((item: { tipBoardId: number; }) => {
@@ -25,7 +25,8 @@ const Tr = ({lists}:any) => {
         //     </tbody>
         //     )
         // })
-        :
+        // :
+        lists &&
                 lists.lists.map((item: { questionBoardId: number; }) => {
                     return (
                     <tbody>
