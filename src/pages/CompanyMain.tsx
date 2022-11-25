@@ -25,17 +25,17 @@ const CompanyMain = () => {
   const menu = [{
     title: "플리마켓 주최 /프로모션 대행",
     image: calendaricon,
-    url: "/fleamarket"
+    url: "/promotion"
   },
   {
     title: "신청자 확인",
     image: promotionicon,
-    url: "/promotion"
+    url: "/fleamarket/apply/result"
   },
   {
     title: "플리마켓 등록하기",
     image: mapicon,
-    url: "/fleamarket/recommend"
+    url: "/fleamarket"
   },
   {
     title: "커뮤니티",

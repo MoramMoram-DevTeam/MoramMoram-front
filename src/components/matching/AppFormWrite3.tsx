@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import effect from "../../assets/images/effect.svg";
 import styles from "./AppFormWrite3.module.css";
 import step3 from "../../assets/images/form/step3.svg";
@@ -15,6 +15,7 @@ import { category1State, lightState, marketExpState, onlineChannelState, onlineE
 const AppFormWrite3 = () => {
 
   const navigate = useNavigate();
+  const detailRef = useRef<HTMLDivElement>(null);
 
   const storeName = useRecoilValue(storeNameState);
   const marketExp = useRecoilValue(marketExpState);
@@ -53,7 +54,7 @@ const AppFormWrite3 = () => {
     e.preventDefault();
     const data = {
       storeName: storeName,
-      marketExp: marketExp,
+      marketExp: 2,
       onlineExp: onlineExp,
       onlineChannel: onlineChannel,
       priceAvg: money,
@@ -63,17 +64,17 @@ const AppFormWrite3 = () => {
       light: light,
       request: etcNote
     };
-    let formData = new FormData();
-		formData.append('itemImg', null);
-    formData.append('certificate', null);
-		formData.append('data', new Blob([JSON.stringify(data)] , {type: "application/json"}));
+    // let formData = new FormData();
+		// formData.append('data', new Blob([JSON.stringify(data)] , {type: "application/json"}));
+    // formData.append('certificate', null);
+		// formData.append('itemImg', null);
 
-    const params = new URLSearchParams();
-    params.append('m_id', '7');
+    // const params = new URLSearchParams();
+    // params.append('m_id', this.);
     try{
-      const response = await axios.post('/applications/new', formData, {
+      const response = await axios.post('/applications/new', data, {
        
-        params: params,
+        params:{'m_id': 1},
         headers: { "Content-Type": `multipart/form-data`}
       }
       )
@@ -81,7 +82,7 @@ const AppFormWrite3 = () => {
       if(response.data) {
         console.log(response.data);
         alert(response.data.marketId);
-        window.location.replace('/fleamarket');
+        window.location.replace('/fleamarket/apply/4');
       }
       else {
         if(response.data.status === "NO_AUTHORITY")
@@ -95,6 +96,10 @@ const AppFormWrite3 = () => {
     }
 
   }
+  useEffect(() => {
+    detailRef.current?.scrollIntoView();
+
+  }, []);
 
   useEffect(() => {    
     if (currentMoney !== null) {
@@ -117,7 +122,7 @@ const AppFormWrite3 = () => {
 },[currentMoney]);
 
   return (
-    <div className={styles.app_wrap}>
+    <div className={styles.app_wrap} ref={detailRef}>
       <div className={styles.app_title}>신청서 작성<img src={effect} alt="*" /></div>
       <div style={{textAlign: "center", marginBottom: "40px"}}><img src={step3} alt="step3" style={{width: "330px", height: "101px"}} /> </div>
       
@@ -158,7 +163,9 @@ const AppFormWrite3 = () => {
               <div className={styles.picture_box}>
                 {/* 파일 공간 */}
                 
-                <div className={styles.picture_inbox}><img src={image} className={styles.pic_icon}/>dsffdsdffdsfsd.jpg</div>
+                <div className={styles.picture_inbox}>
+                  {/* <img src={image} className={styles.pic_icon}/>dsffdsdffdsfsd.jpg */}
+                </div>
 
               </div>
               </div>
@@ -178,7 +185,7 @@ const AppFormWrite3 = () => {
         <div><img src={prevbtn} alt="prev" onClick={() => {
          navigate('/fleamarket/apply/2');        
         }} />
-        <div onClick={onClickTest}
+        <div onClick={onClickSubmit}
         // onClick={(e:any) => {
         //   onClickSubmit(e);
         //  navigate('/fleamarket/apply/4');        

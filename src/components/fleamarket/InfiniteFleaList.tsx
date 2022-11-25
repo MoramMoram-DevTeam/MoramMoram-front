@@ -19,7 +19,7 @@ const InfiFrame = styled.div`
 
 const InfiniteFleaList = () => {
   const navigate = useNavigate();
-  const [infoArr, setInfoArr] = useState<FleaInfo[] | undefined>([]);
+  const [infoArr, setInfoArr] = useState<any>([]);
   const MRName = useRecoilValue(NameState);
   const observerRef = useRef<IntersectionObserver>();
   const boxRef = useRef<HTMLDivElement>(null);
@@ -29,6 +29,9 @@ const InfiniteFleaList = () => {
     await axios.get('/markets')
       .then((res) => {
         setInfoArr(res.data[1]);
+        console.log(res.data);
+
+       
       }).catch((err) => {
         console.log(err);
       })
@@ -58,7 +61,7 @@ const InfiniteFleaList = () => {
 
   return (
     <InfiFrame>
-      {infoArr && infoArr.map((info, idx) => {
+      {infoArr && infoArr.map((info:any, idx:number) => {
         const dateArr: Array<string> = info.end.split('-');
         if (infoArr.length - 2 === idx) {
           return (
@@ -70,7 +73,8 @@ const InfiniteFleaList = () => {
                   id: info.id
                 }
               })}}>
-              <MarketImg />
+                <MarketImg src={info.mimg} />
+              {/* < img src={info.mimg} alt="pic" style={{width: "234px", height: '162px'}}/> */}
               <MarketTitle>{info.marketName}</MarketTitle>
               <MarketAddress>{info.place}</MarketAddress>
               <Deadline>{dateArr[1]}/{dateArr[2]}일 마감</Deadline>

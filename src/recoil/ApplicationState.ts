@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import {atom } from "recoil";
 
 export const storeNameState = atom<string>({
   key: 'storeNameState',
@@ -11,7 +11,7 @@ export const category1State = atom<boolean>({
 });
 
 export const subCategory1State = atom<string|null>({
-  key: 'subCategory1',
+  key: 'subCategory1State',
   default: null
 });
 export const subCategory2State = atom<string|null>({
@@ -48,6 +48,6 @@ export const priceAvgState = atom<string|null>({
 });
 
 export const requestState = atom<string|null>({
-  key: 'returnAddress',
+  key: 'requestState',
   default: null
 });

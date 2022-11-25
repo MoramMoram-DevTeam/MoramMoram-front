@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import effect from "../../assets/images/effect.svg";
 import styles from "./AppFormWrite2.module.css";
 import step2 from "../../assets/images/form/step2.svg";
@@ -15,8 +15,10 @@ import { lightState, marketExpState, onlineExpState } from "recoil/ApplicationSt
 const AppFormWrite2 = () => {
 
   const navigate = useNavigate();
+  const detailRef = useRef<HTMLDivElement>(null);
   const onClickNext = () => {
     navigate('/fleamarket/apply/2');
+    
   }
 
   const [currentClick, setCurrentClick] = useState(null);
@@ -33,20 +35,23 @@ const AppFormWrite2 = () => {
   
   const GetClick = (e:any) => {
     setCurrentClick(e.target.id);
-    setMarketExp(!marketExp);
-    console.log(e.target.id, marketExp);
+    setMarketExp(true);
 
   };
 
   const ZipClick = (e:any) => {
     setZipClick(e.target.id);
-    setOnlineExp(!onlineExp);
+    setOnlineExp(true);
   }
 
   const onlClick = (e:any) => {
     setlClick(e.target.id);
-    setHaving(!having);
+    setHaving(true);
   }
+  useEffect(() => {
+    detailRef.current?.scrollIntoView();
+
+  }, []);
 
   useEffect(() => {    
     if (currentClick !== null) {
@@ -109,7 +114,7 @@ useEffect(() => {
 },[lClick]);
 
   return (
-    <div className={styles.app_wrap}>
+    <div className={styles.app_wrap} ref={detailRef}>
       <div className={styles.app_title}>신청서 작성<img src={effect} alt="*" /></div>
       <div style={{textAlign: "center", marginBottom: "40px"}}><img src={step2} alt="step2"  /> </div>
       
@@ -178,7 +183,9 @@ useEffect(() => {
               <div className={styles.picture_box}>
                 {/* 파일 공간 */}
                 
-                <div className={styles.picture_inbox}><img src={image} className={styles.pic_icon}/>dsffdsdffdsfsd.jpg</div>
+                <div className={styles.picture_inbox}>
+                  {/* <img src={image} className={styles.pic_icon}/>dsffdsdffdsfsd.jpg */}
+                  </div>
 
               </div>
               </div>

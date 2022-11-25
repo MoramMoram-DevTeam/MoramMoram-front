@@ -37,6 +37,7 @@ import MyPage from 'pages/mypage/MyPage';
 import CompanyApplication from 'pages/company/CompanyApplication';
 import Promotion from 'pages/company/Promotion';
 import CompanyMain from 'pages/CompanyMain';
+import ApplicationResult from 'pages/matching/ApplicationResult';
 
 export const history = createBrowserHistory();
 ReactGA.event({
@@ -80,6 +81,7 @@ function App() {
         <Route path="/fleamarket/apply/2" element={<AppFormWrite2 />} />
         <Route path="/fleamarket/apply/3" element={<AppFormWrite3 />} />
         <Route path="/fleamarket/apply/4" element={<AppFormWrite4 />} />
+        <Route path="/fleamarket/apply/result" element={<ApplicationResult />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/regist" element={<RegistForm />} />
