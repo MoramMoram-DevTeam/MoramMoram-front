@@ -64,7 +64,7 @@ const FleaMarketList = () => {
         </div>
       </div>     
       <div className={styles.apply_title }>신청 가능 플리마켓</div>
-      <InfiniteFleaList/>
+      <InfiniteFleaList />
     </div>
   )
 }

@@ -30,9 +30,9 @@ const Td = ({item, url}:any) => {
         <>
         <tr onClick={onClickTr}>
             <td className={styles.td_title}>{item.title}</td>
-            <td className=''>{item.boardDate}</td>
-            <td className=''>{item.likeCnt}</td>
-            <td className=''>{item.viewCnt}</td>     
+            <td className={styles.td}> { item.createdAt && item.createdAt.split(' ')[0]}</td>
+            <td className={styles.td}>{item.likeCnt}</td>
+            <td className={styles.td}>{item.viewCnt}</td>     
         </tr>
         </>
     )

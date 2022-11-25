@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, {useState, useCallback, useRef, useEffect} from "react";
 import effect from "../../assets/images/effect.svg";
 import styles from "./AppFormWrite1.module.css";
 import step1 from "../../assets/images/form/step1.svg";
@@ -11,6 +11,10 @@ import { category1State, returnAddressState, storeNameState, subCategory1State, 
 const AppFormWrite1 = () => {
 
   const navigate = useNavigate();
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  const [currentClick, setCurrentClick] = useState(null);
+  const [prevClick, setPrevClick] = useState(null);
 
   const [subCategory, setSubCategory] = useState<string|null>('');
   const [subCategoryArr, setSubCategoryArr] = useState<string[] | []>([]);
@@ -42,6 +46,38 @@ const AppFormWrite1 = () => {
     console.log(event.currentTarget.value)
     setSubCategory2(event.currentTarget.value)
   }
+
+  const GetClick = (e:any) => {
+    setCurrentClick(e.target.id);
+    setCategory(true);
+    console.log(e.target.id, category);
+
+  };
+
+  useEffect(() => {
+    detailRef.current?.scrollIntoView();
+
+  }, []);
+
+  useEffect(() => {    
+    if (currentClick !== null) {
+      let current = document.getElementById(currentClick);
+      console.log(current);
+      current.style.backgroundColor = "#FFB600";
+      current.style.color = "#00084A";
+      current.style.border = "2px solid #00084A";
+      
+    }
+
+    if (prevClick !== null) {
+      let prev = document.getElementById(prevClick);
+      prev.style.backgroundColor = "#FFFFFF";
+      prev.style.color = "#BABABA";
+      prev.style.border = "2px solid #BABABA";
+    }
+    setPrevClick(currentClick);
+ 
+},[currentClick]);
 
   const onKeyUp = useCallback(
     (e:any) => {
@@ -90,7 +126,7 @@ const AppFormWrite1 = () => {
 
 
   return (
-    <div className={styles.app_wrap}>
+    <div className={styles.app_wrap} ref={detailRef}>
       <div className={styles.app_title}>신청서 작성<img src={effect} alt="*" /></div>
       <div style={{textAlign: "center", marginBottom: "40px" }}><img src={step1} alt="step1"  /> </div>
       
@@ -112,7 +148,7 @@ const AppFormWrite1 = () => {
               <div>카테고리</div>
             </div>
             <div className={styles.form_category}>
-              <span onClick={() => {setCategory(!category); console.log(category);}}>공예</span>
+              <span id="current" onClick={GetClick}>공예</span>
               <span>키친</span>
               <span>패션</span>
               <span>의류</span>
@@ -131,7 +167,7 @@ const AppFormWrite1 = () => {
               <div>세부 카테고리</div>
             </div>
             <div className="SubWrap">
-              <input type="text" placeholder="관련 키워드를 입력해주세요 ex) #귀걸이 (최대 5개 입력 가능)"
+              <input type="text" placeholder="관련 키워드를 입력해주세요 ex) 귀걸이 (최대 5개 입력 가능)"
               className="SubInput"
               value={subCategory}
               onChange={onSubCategoryHandler}

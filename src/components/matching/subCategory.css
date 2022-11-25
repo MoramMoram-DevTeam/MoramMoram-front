@@ -23,8 +23,8 @@
     color: #00084A;
     background-color: #FFB600;
     border: 2px solid #00084A;
-    width: 70px;
-    border-radius: 40px;
+    width: 60px;
+    border-radius: 20px;
     padding: 8px 12px;
     display: flex;
     justify-content: center;
@@ -34,6 +34,8 @@
     line-height: 20px;
     margin-right: 5px;
     cursor: pointer;
+    font-family: 'SUIT-Light';
+    font-size: 1rem;
   }
 
   .SubInput {
