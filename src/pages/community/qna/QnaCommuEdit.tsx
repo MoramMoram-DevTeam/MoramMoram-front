@@ -33,7 +33,7 @@ const QnaCommuEdit = () => {
     .then((res) => {
       if(res.data.isSuccess) {
         alert(res.data.message);
-        window.location.replace(`/community/questions/:questionBoardId`);
+        window.location.replace(`/community/questions/${questionBoardId}`);
       }
       else {
         alert(res.data.message);

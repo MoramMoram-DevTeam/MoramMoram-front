@@ -41,7 +41,7 @@ const Navbar = () => {
         
           {token ?
             <div className={styles.logoutbox}>
-          <span><Link to="/login">마이페이지</Link></span>  
+          <span><Link to="/mypage">마이페이지</Link></span>  
           <span className={styles.line}></span>
           <span onClick={logoutToken}>로그아웃</span>      
         </div>
@@ -60,13 +60,41 @@ const Navbar = () => {
       <div className={styles.nav_bottom}>
       {/* <span>{MRName}님</span> */}
         <ul>
-          <li><Link to="/fleamarket">플리마켓</Link></li>
+          <li className={styles.nav_bottom1}>
+            <Link to="/fleamarket" >플리마켓</Link>
+            <div className={styles.nav_dropdown}>
+              <ul  className={styles.hidden_dropdown}></ul>
+              <ul className={styles.nav_dropdown1}>
+                  <li><Link to="/fleamarket">일정확인</Link></li>
+                  <li><Link to="/fleamarket/recommend">플리마켓 추천</Link></li>
+                  <li><Link to="/app">신청서 작성 및 확인</Link></li>
+              </ul>
+              <ul className={styles.nav_dropdown2}>
+                  <li><Link to="/community/tips">정보게시판</Link></li>
+                  <li><Link to="/community/questions">질문게시판</Link></li>
+              </ul>
+              <ul className={styles.nav_dropdown3}>
+                  <li><Link to="/">집기대여</Link></li>
+                  <li><Link to="/promotion">프로모션/주최 대행</Link></li>
+              </ul>
+              <ul></ul>
+             
+            </div>  
+          </li>
           <img src={star} className={styles.star} alt="."/>
-          <li><Link to="/community/questions">커뮤니티</Link></li>
+          <li className={styles.nav_bottom2}>
+            <Link to="/community/questions">커뮤니티</Link>
+           
+          </li >
           <img src={star} className={styles.star} alt="."/>
-          <li><Link to="/">플리마켓 대행</Link></li>
+          <li className={styles.nav_bottom3}><Link to="/community/tips">플리마켓 대행</Link></li>
+      
           <img src={star} className={styles.star} alt="."/>
-          <li>공지사항</li>
+          {/* <li>공지사항</li> */}
+          <li>
+            <Link to="/">공지사항</Link>
+            
+          </li>
         </ul>
       </div>
       

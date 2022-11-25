@@ -20,27 +20,27 @@ import promotionicon from "../assets/images/main/mainmenu/promotionicon.svg";
 import applyicon from "../assets/images/main/mainmenu/applyicon.svg";
 import mapicon from "../assets/images/main/mainmenu/mapicon.svg";
 
-const Main = () => {
+const CompanyMain = () => {
 
   const menu = [{
-    title: "플리마켓 일정 확인",
+    title: "플리마켓 주최 /프로모션 대행",
     image: calendaricon,
     url: "/fleamarket"
   },
   {
-    title: "프로모션 / 모집",
+    title: "신청자 확인",
     image: promotionicon,
     url: "/promotion"
   },
   {
-    title: "플리마켓 추천",
+    title: "플리마켓 등록하기",
     image: mapicon,
     url: "/fleamarket/recommend"
   },
   {
-    title: "신청서 작성",
+    title: "커뮤니티",
     image: applyicon,
-    url: "/fleamarket/apply/1"
+    url: "/community/questions"
   },
 
 ]
@@ -104,4 +104,4 @@ const Main = () => {
   )
 }
 
-export default Main;
+export default CompanyMain;

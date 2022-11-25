@@ -22,9 +22,7 @@ export const Frame = styled.div`
   cursor: pointer;
 `;
 
-export const MarketImg = styled.img.attrs({
-  src: `${marketPicture}`,
-})`
+export const MarketImg = styled.img`
   width: 234px;
   height: 162px;
 `;
@@ -72,7 +70,7 @@ const MarketFrame = ({info}:InfoProps) => {
 
   return (
     <Frame onClick={onClickMarket}>
-      <MarketImg />
+      <MarketImg src={info.mimg}/>
       <MarketTitle>{info.marketName}</MarketTitle>
       <MarketAddress>{info.place}</MarketAddress>
       <Deadline>{dateArr[1]}/{dateArr[2]}일 마감</Deadline>

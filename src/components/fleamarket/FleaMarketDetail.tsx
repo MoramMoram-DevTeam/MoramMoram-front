@@ -13,7 +13,7 @@ const FleaMarketDetail = () => {
   const [fleaDetail, setFleaDetail] = useState<any>([]);
   const detailRef = useRef<HTMLDivElement>(null);
 
-  
+  const [liked, setLiked] = useState(false);
     
   const getLists = async () => {
 
@@ -40,6 +40,7 @@ const FleaMarketDetail = () => {
     })
     .then((res) => {
       alert(res.data.statusMessage);
+      setLiked(!liked);
     })
     .catch((err) => {
       console.log(err);
@@ -58,7 +59,7 @@ const FleaMarketDetail = () => {
         {fleaDetail && 
         <div>
         <div className={styles.top}>
-          <div className={styles.pic}><img src={fleaPic} alt="picture" /></div>
+          <div className={styles.pic}><img src={fleaDetail.mimg} alt="picture" /></div>
           <div>
             <div className={styles.start}>{fleaDetail.start}</div>
             <div className={styles.mname}>{fleaDetail.mname}</div>
@@ -73,18 +74,18 @@ const FleaMarketDetail = () => {
         <div className={styles.bottom}>
           <div className={styles.bottom_title_box}>
             <div className={styles.bottom_title}>상세 정보</div>
-            <div className={styles.like_btn} onClick={onClickLike}><img src={like} alt="like" style={{marginRight: "5px"}}/>찜하기</div>
+            <div className={styles.like_btn} onClick={onClickLike} id="zzim"><img src={like} alt="like" style={{marginRight: "5px"}}/>{liked ? '완료': '찜하기'}</div>
           </div>
 
           <div className={styles.desc}>
             <div className={styles.desc_info}>
               <div className={styles.desc_title}><img src={star} alt="*" />플리마켓 참여 조건 안내</div>
-              <div className={styles.desc_note}>어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구</div>
+              <div className={styles.desc_note}>모든 품목 가능합니다.<br></br> 의류마감<br></br> 일일셀러님은 최소 2일 이상 신청 가능합니다.<br></br> 현장지원: 테이블(1200*600), 조명, 의자, 전기</div>
             </div>
             <div className={styles.line}></div>
             <div className={styles.desc_info}>
               <div className={styles.desc_title}><img src={star} alt="*" />판매 주요 사항</div>
-              <div className={styles.desc_note}>어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구 저쩌구어쩌구</div>
+              <div className={styles.desc_note}>8월달, 9월달, 10월달 월 고정비용 및 참가비<br></br> 메인 월고정 월 130만원<br></br> 금토일(공휴일 포함): 일일 8만원<br></br> 월화수목 일일 4만원</div>
             </div>
             <div className={styles.line}></div>
             <div className={styles.desc_info}>

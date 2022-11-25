@@ -62,11 +62,7 @@ const FleaMarketList = () => {
           <div className={styles.deadline_title}>신청 마감 임박!!</div>
             <FleaCarousel />
         </div>
-      </div>
-      {/* 광고 배너 */}
-      <div>
-        <div className={styles.add_banner}>{/*광고 배너 자리*/}</div>
-      </div>
+      </div>     
       <div className={styles.apply_title }>신청 가능 플리마켓</div>
       <InfiniteFleaList/>
     </div>

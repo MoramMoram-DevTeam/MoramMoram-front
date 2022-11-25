@@ -9,12 +9,22 @@ const Td = ({item, url}:any) => {
   const navigate = useNavigate();
 
   const onClickTr = () => {
-    // navigate(`/community/${url}/${item.questionBoardId}`,{
-    //   state: {
-    //     url: url,
-    //     questionBoardId: item.questionBoardId
-    //   }
-    // });
+    item && url === "questions" 
+    ?
+    navigate(`/community/${url}/${item.questionBoardId}`,{
+      state: {
+        url: url,
+        questionBoardId: item.questionBoardId
+      }
+    })
+    :
+    navigate(`/community/${url}/${item.tipBoardId}`,{
+      state: {
+        url: url,
+        tipBoardId: item.tipBoardId
+      }
+    })
+    ;
   }
     return (
         <>

@@ -73,6 +73,9 @@
   background-color: #F5F5F5;
   margin: 0 auto;
   display: flex;
+  padding-left: 10px;
+  font-size: 1rem;
+  font-family: 'SUIT-Regular';
   outline: 0;
   border: 0;
   

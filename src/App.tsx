@@ -32,6 +32,11 @@ import TipsCommuDetail from 'pages/community/tips/TipsCommuDetail';
 import TipsCommuEdit from 'pages/community/tips/TipsCommuEdit';
 import TipsCommuWrite from 'pages/community/tips/TipsCommuWrite';
 import AppFormWrite4 from 'components/matching/AppFormWrite4';
+import FleaCalendar from 'components/fleamarket/FleaCalendar';
+import MyPage from 'pages/mypage/MyPage';
+import CompanyApplication from 'pages/company/CompanyApplication';
+import Promotion from 'pages/company/Promotion';
+import CompanyMain from 'pages/CompanyMain';
 
 export const history = createBrowserHistory();
 ReactGA.event({
@@ -65,10 +70,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/company" element={<CompanyMain />} />
 
         <Route path="/fleamarket" element={<FleaMarketList />} />
         <Route path="/fleamarket/:id" element={<FleaMarketDetail />} />
 
+        <Route path="/app" element={<ApplicationForm />} />
         <Route path="/fleamarket/apply/1" element={<AppFormWrite1 />} />
         <Route path="/fleamarket/apply/2" element={<AppFormWrite2 />} />
         <Route path="/fleamarket/apply/3" element={<AppFormWrite3 />} />
@@ -78,7 +85,6 @@ function App() {
         <Route path="/regist" element={<RegistForm />} />
         <Route path="/signup/user" element={<MRUserSignup />} />
         <Route path="/signup/user-c" element={<CUserSignup />} />
-        <Route path="/app" element={<ApplicationForm />} />
 
         <Route path="/community/questions" element={<QnaComuList />} />
         <Route path="/community/questions/:questionBoardId" element={<QnaCommuDetail />} />
@@ -89,6 +95,15 @@ function App() {
         <Route path="/community/tips/:tipBoardId" element={<TipsCommuDetail />} />
         <Route path="/community/tips/:tipBoardId/edit" element={<TipsCommuEdit />} />
         <Route path="/community/tips/write" element={<TipsCommuWrite />} />
+
+        <Route path="/fleacalendar" element={<FleaCalendar />} />
+
+        <Route path="/promotion" element={<Promotion />} />
+
+        <Route path="/company/application" element={<CompanyApplication />} />
+
+
+        <Route path="/mypage" element={<MyPage />} />
 
       </Routes>
       <Footer />

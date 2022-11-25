@@ -20,12 +20,11 @@ const Login = () => {
   let navigate = useNavigate();
 
   const onEmailHandler = (event:any) => { // id 저장
-    console.log(event.currentTarget.value)
+
     setEmail(event.currentTarget.value)
   }
 
   const onPwHandler = (event:any) => { // pw 저장
-    console.log(event.currentTarget.value)
     setPw(event.currentTarget.value)
   }
 
@@ -46,7 +45,7 @@ const Login = () => {
             // setTokenData(token);
             
             // alert(`로그인 성공: atk는 ${atk}`);
-            
+            console.log('일반회원!')
             window.location.replace('/');
             // navigate('/');
           }
@@ -56,6 +55,7 @@ const Login = () => {
           
     } catch (err) {
       console.log(err);
+      
 
     }
 
@@ -72,22 +72,19 @@ const Login = () => {
             console.log('response.data: ', response.data);            
             localStorage.setItem('rtk', response.data.rtk);
             localStorage.setItem('atk', response.data.atk);
-            // setAtk(response.data.atk);
             setAuthorizationToken(response.data.atk);
-            // const token = response.data.atk;
-            // setTokenData(token);
-            
-            // alert(`로그인 성공: atk는 ${atk}`);
-            
-            window.location.replace('/');
-            // navigate('/');
+            console.log('기업회원!');
+            window.location.replace('/company');
           }
           else {
             alert(response.data.status);
+            console.log('기업회원!');
+            
           }
           
     } catch (err) {
       console.log(err);
+      console.log('기업회원!');
 
     }
 
@@ -117,7 +114,7 @@ const Login = () => {
           <button className={styles.company_btn} id="company" onClick={GetClick}>기업 회원</button>
         </div>
         
-        <form onSubmit={ currentClick ? login : companyLogin} className={styles.login_inner_form} >
+        <form onSubmit={ currentClick === "user" ? login : companyLogin} className={styles.login_inner_form} >
           <div className={styles.login_inner}>
             
             <div className={styles.login_form}>

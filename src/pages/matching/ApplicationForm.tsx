@@ -3,6 +3,7 @@ import effect from "../../assets/images/effect.svg";
 import applyicon from "../../assets/images/main/mainmenu/applyicon.svg";
 import styles from "./ApplicationForm.module.css";
 import ReactGA from "react-ga";
+import { useNavigate } from "react-router-dom";
 
 interface AppForm {
     id: number,
@@ -14,6 +15,9 @@ const appArray:AppForm[] = [{id: 1, image: applyicon, title: "신청서 작성 �
 {id: 2, image: applyicon, title: "신청 결과 바로가기"}]
 
 const ApplicationForm = () => {
+
+  const navigate = useNavigate();
+
   return (
     
     <div className={styles.app_wrap}>
@@ -22,11 +26,7 @@ const ApplicationForm = () => {
       <div className={styles.app_btn_wrap}>
         {(appArray as Array<AppForm>).map((item) => 
           <div className={styles.app_btn} onClick= {() => {
-            ReactGA.event({
-              category: "Button",
-              action: "go to application form",
-              label: "profile",
-            });
+            navigate('/fleamarket');
           }} key={item.id}>
               <img src={item.image} alt="icon"/>
               <div>

@@ -1,0 +1,74 @@
+.app_wrap {
+  flex: 1;
+  width: 100%;
+  padding: 8% 10%;
+  min-height: 73vh;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #F5F5F5;
+  margin: 0 auto;
+}
+
+.app_title {
+  font-family: 'SUIT-SemiBold';
+  font-size: 2.25rem;
+  color: #0C205E;
+  padding-bottom: 5%;
+}
+
+.app_title img {
+  margin-left: 3px;
+  vertical-align: top;
+}
+
+.flex_wrap {
+  width: 1128px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my_menu {
+  width: 265px;
+  height: 1216px;
+  border-radius: 10px;
+  background-color: #FFF;
+  border: 1px solid #A7A7A7;
+}
+
+.my_info {
+  width: 839px;
+  height: 1216px;
+  border-radius: 10px;
+  background-color: #FFF;
+  border: 1px solid #A7A7A7;
+}
+
+.my_menu {
+  font-family: 'SUIT-Regular';
+  font-size: 1.15rem;
+  line-height: 2rem;
+  padding-left: 20px;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+.my_menu ul li:first-of-type {
+  font-family: 'SUIT-SemiBold'
+}
+
+.my_menu ul li:not(:first-of-type) {
+  padding-left: 14px;
+}
+.my_menu ul li > img {
+  box-sizing: border-box;
+  padding-bottom: 4px;
+  margin-right: 5px;
+}
+
+.line {
+  width: 214px;
+  height: 0.5px;
+  background-color: #BABABA;
+  margin: 5% 0;
+}

@@ -12,7 +12,7 @@ const Comment = ({lists}: any, params:string) => {
 
   const onClickDelete2 = async (e: any) => {
     e.preventDefault();
-    await axios.delete(`/questions/${questionBoardId}/replies/${repId}`)
+    await axios.delete(`/questions/replies/${repId}`)
     .then((res) => {
       if(res.data.isSuccess){
         alert(res.data.message);
@@ -27,7 +27,7 @@ const Comment = ({lists}: any, params:string) => {
   const onClickDelete = async () => {
 
     try{
-      const response = await axios.delete(`/questions/${params}/replies/${repId}`);
+      const response = await axios.delete(`/questions/replies/${repId}`);
       if(response.data){
         alert('삭제되었습니다.');
         console.log(response.data, 'delete');

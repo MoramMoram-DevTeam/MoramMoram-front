@@ -20,14 +20,24 @@ const TdTitle = styled.td`
   font-size: 1.125rem;
 `
 
-const CommuTop5Lists = ({questionBoardId}:any) => {
+const CommuTop5Lists = ({url}:any) => {
   const navigate = useNavigate();
   const [top5, setTop5] = useState<any>();
 
-  const getTop5 = async () => {
-    await axios.get(`/questions/top-posts`)
+  const getQnaTop5 = async () => {
+    await axios.get('/questions/top-posts')
       .then((res) => {        
-        setTop5(res.data.result);
+        setTop5(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const getInfoTop5 = async () => {
+    await axios.get('/tips/top-posts')
+      .then((res) => {        
+        setTop5(res.data.lists);
       })
       .catch((err) => {
         console.log(err);
@@ -35,19 +45,32 @@ const CommuTop5Lists = ({questionBoardId}:any) => {
   }
 
   useEffect(() => {
-    getTop5();
+    console.log(url);
+    url === "questions" ? getQnaTop5() : getInfoTop5();
 
   }, [])
 
   const onClickTr =() => {
-    console.log(questionBoardId);
+    alert('hahaha');
   }
 
   return (
+
+    url === "questions" ?
     
       top5 && top5.map((item: { questionBoardId: number; title: string; boardDate: string; likeCnt: number; viewCnt: number; }) => (
         // <Top5Td key={item.questionBoardId} item={item} />
-        <tr onClick={onClickTr}>
+        <tr onClick={onClickTr} key={item.questionBoardId}>
+        <TdTitle>{item.title}</TdTitle>
+        <TopTd className=''>{item.boardDate}</TopTd>
+        <TopTd className=''>{item.likeCnt}</TopTd>
+        <TopTd className=''>{item.viewCnt}</TopTd>
+      </tr>
+      ))
+      :
+      top5 && top5.map((item: { tipBoardId: number; title: string; boardDate: string; likeCnt: number; viewCnt: number; }) => (
+        // <Top5Td key={item.questionBoardId} item={item} />
+        <tr onClick={onClickTr} key={item.tipBoardId}>
         <TdTitle>{item.title}</TdTitle>
         <TopTd className=''>{item.boardDate}</TopTd>
         <TopTd className=''>{item.likeCnt}</TopTd>

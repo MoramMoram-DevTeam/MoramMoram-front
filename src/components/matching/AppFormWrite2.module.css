@@ -117,6 +117,8 @@
   width: 568px;
   height: 50px;
   margin-right: 2px;
+  font-size: 1rem;
+  font-family: 'SUIT-Regular';
 }
 
 
@@ -148,18 +150,18 @@
   border: 2px solid #00084A;
 }
 
-.form_category {
-  padding-right: 25px;
-  width: 541px;
+.having_category {
+  padding-right: 140px;
+  width: 430px;
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(4, auto);
   grid-template-rows: 1fr 1fr;
   column-gap: 5px;
   row-gap: 15px;
 }
 
 
-.form_category span {
+.having_category span {
   height: 40px;
   width: 89px;
   border: 2px solid #BABABA;
@@ -172,11 +174,13 @@
   align-items: center;
 }
 
-.form_category span:hover {
+.having_category span:hover {
   color: #00084A;
   background-color: #FFB600;
   border: 2px solid #00084A;
 }
+
+
 
 .picture {
   width: 568px;

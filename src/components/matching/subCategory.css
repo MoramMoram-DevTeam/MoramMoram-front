@@ -1,0 +1,49 @@
+.hashDivrap {
+  margin-top: 24px;
+  color: rgb(52, 58, 64);
+  font-size: 1.125rem;
+  display: flex;
+  flex-wrap: wrap;
+  letter-spacing: -0.6px;
+  color: #444241;
+  border-bottom: 1.6px solid gray;
+  padding: 2px 2px 8px 2px;
+}
+
+  .SubWrapOuter {
+    display: flex;
+    flex-wrap: wrap;
+    
+    padding-left: 10px;
+  }
+
+  .SubWrapInner {
+
+    margin-top: 5px;
+    color: #00084A;
+    background-color: #FFB600;
+    border: 2px solid #00084A;
+    width: 70px;
+    border-radius: 40px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .SubInput {
+    width: auto;
+    margin: 10px;
+    display: inline-flex;
+    outline: none;
+    cursor: text;
+    line-height: 2rem;
+    margin-bottom: 0.75rem;
+    min-width: 8rem;
+    border: none;
+  }
