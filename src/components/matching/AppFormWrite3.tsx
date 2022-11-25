@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import effect from "../../assets/images/effect.svg";
 import styles from "./AppFormWrite3.module.css";
 import step3 from "../../assets/images/form/step3.svg";
@@ -8,10 +8,113 @@ import prevbtn from "../../assets/images/form/prevbtn.svg";
 import submitbtn from "../../assets/images/form/submitbtn.svg";
 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { category1State, lightState, marketExpState, onlineChannelState, onlineExpState, priceAvgState, requestState, storeNameState, subCategory1State, subCategory2State } from "recoil/ApplicationState";
 
 const AppFormWrite3 = () => {
 
   const navigate = useNavigate();
+
+  const storeName = useRecoilValue(storeNameState);
+  const marketExp = useRecoilValue(marketExpState);
+  const onlineExp = useRecoilValue(onlineExpState);
+  const onlineChannel = useRecoilValue(onlineChannelState);
+  const category1 = useRecoilValue(category1State);
+  const subCategory1 = useRecoilValue(subCategory1State);
+  const subCategory2 = useRecoilValue(subCategory2State);
+  const light = useRecoilValue(lightState);
+
+  const [money, setMoney] = useRecoilState(priceAvgState);  
+  const [etcNote, setEtcNote] = useRecoilState(requestState);
+
+  const [currentMoney, setCurrentMoney] = useState(null);
+
+  const [prevMoney, setPrevMoney] = useState(null);
+
+  const onEtcNote = (e:any) => {
+    setEtcNote(e.target.value);
+  }
+
+
+  const CurrentMoneyClick = (e:any) => {
+    setCurrentMoney(e.target.id);
+    setMoney("1만원~2만원");
+    
+  }
+
+  const onClickTest = () => {
+    alert('신청이 완료되었습니다.');
+    navigate('/fleamarket/apply/4');
+    window.scrollTo(0,0);
+  }
+
+  const onClickSubmit = async (e:any) => {
+    e.preventDefault();
+    const data = {
+      storeName: storeName,
+      marketExp: marketExp,
+      onlineExp: onlineExp,
+      onlineChannel: onlineChannel,
+      priceAvg: money,
+      category1: category1,
+      subCategory1: subCategory1,
+      subCategory2: subCategory2,
+      light: light,
+      request: etcNote
+    };
+    let formData = new FormData();
+		formData.append('itemImg', null);
+    formData.append('certificate', null);
+		formData.append('data', new Blob([JSON.stringify(data)] , {type: "application/json"}));
+
+    const params = new URLSearchParams();
+    params.append('m_id', '7');
+    try{
+      const response = await axios.post('/applications/new', formData, {
+       
+        params: params,
+        headers: { "Content-Type": `multipart/form-data`}
+      }
+      )
+    
+      if(response.data) {
+        console.log(response.data);
+        alert(response.data.marketId);
+        window.location.replace('/fleamarket');
+      }
+      else {
+        if(response.data.status === "NO_AUTHORITY")
+          alert(response.data.message);
+
+      }    
+      
+  } catch(err) {
+      alert("글을 등록하지 못했습니다.");
+      console.log(err);
+    }
+
+  }
+
+  useEffect(() => {    
+    if (currentMoney !== null) {
+      let current = document.getElementById(currentMoney);
+      console.log(current);
+      current.style.backgroundColor = "#FFB600";
+      current.style.color = "#00084A";
+      current.style.border = "2px solid #00084A";
+      
+    }
+
+    if (prevMoney!== null) {
+      let prev = document.getElementById(prevMoney);
+      prev.style.backgroundColor = "#FFFFFF";
+      prev.style.color = "#BABABA";
+      prev.style.border = "2px solid #BABABA";
+    }
+    setPrevMoney(currentMoney);
+ 
+},[currentMoney]);
 
   return (
     <div className={styles.app_wrap}>
@@ -30,7 +133,7 @@ const AppFormWrite3 = () => {
              
             <div className={styles.price_category}>
                <span>1만원 미만</span>
-              <span>1만원~2만원</span>
+              <span id="currentMoney" onClick={CurrentMoneyClick}>1만원~2만원</span>
               <span>2만원~3만원</span>
               <span>3만원~4만원</span>
               <span>4만원~5만원</span>
@@ -66,7 +169,7 @@ const AppFormWrite3 = () => {
               <img src={star} alt="*" />
               <div>기타 요청사항 <span>(선택)</span></div>
             </div>
-            <div><input type="text" className={styles.etc_box}/></div>
+            <div><input type="text" className={styles.etc_box} value={etcNote} onChange={onEtcNote}/></div>
           </div>
 
         </div>
@@ -75,9 +178,12 @@ const AppFormWrite3 = () => {
         <div><img src={prevbtn} alt="prev" onClick={() => {
          navigate('/fleamarket/apply/2');        
         }} />
-        <div><img src={submitbtn} alt="subbtn" onClick={() => {
-         navigate('/fleamarket/apply/4');        
-        }} />
+        <div onClick={onClickTest}
+        // onClick={(e:any) => {
+        //   onClickSubmit(e);
+        //  navigate('/fleamarket/apply/4');        
+        // }}
+        ><img src={submitbtn} alt="subbtn" />
       </div>
         
       </div>

@@ -4,7 +4,6 @@ import plus from "../../assets/images/plus.svg";
 import Common from "./Common";
 import axios from "axios";
 import {useRecoilValue} from "recoil";
-import { timeLog } from "console";
 // import axios from "axios";
 
 const CommunityWriting = ({url}:any) => {
@@ -68,7 +67,7 @@ const CommunityWriting = ({url}:any) => {
     
       if(response.data.isSuccess) {
         alert(response.data.message);
-        window.location.replace('/community/questions');
+        window.location.replace(`/community/quesitions`);
       }
       else {
         if(response.data.status === "NO_AUTHORITY")

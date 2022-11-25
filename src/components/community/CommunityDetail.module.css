@@ -143,6 +143,7 @@
 }
 
 
+
 .report_btn {
   
   width: 152px;
@@ -171,6 +172,17 @@
   width: 1050px;
   margin: 0 auto;
   padding-bottom: 10%;
+
+}
+
+.btn {
+  border: none;
+  outline: none;
+  background-color: #FFF;
+  color: #A7A7A7;
+  font-size: 1rem;
+  font-family: 'SUIT-Medium';
+  cursor: pointer;
 
 }
 

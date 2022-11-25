@@ -1,15 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./MainMenu.module.css";
 
 interface MenuInfo {
   title: string;
   image: string;
+  url: string;
 }
 
-const MainMenu = ({title, image}:MenuInfo) => {
+const MainMenu = ({title, image, url}:MenuInfo) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.app_btn} onClick={() => {
-      
+      navigate(`${url}`);
     window.scrollTo(0,0);
     //alert('z');
     }}>

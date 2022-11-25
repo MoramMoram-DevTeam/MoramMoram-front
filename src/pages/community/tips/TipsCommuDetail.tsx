@@ -40,7 +40,7 @@ const TipsCommuDetail = () => {
 
     const getCommentLists = () => {
     try {
-      axios.get(`/questions/${params}/replylist?page=0`)
+      axios.get(`/tips/${params}/replylist?page=0`)
         .then(
           (response) => {
               setCommentLists(response.data); 
@@ -54,7 +54,7 @@ const TipsCommuDetail = () => {
   
   const onSubmitReply = async (e: any) => {
     e.preventDefault();
-    await axios.post(`/questions/${params}/replies`, {
+    await axios.post(`/tips/${params}/replies`, {
       replyText: comments
     })
     .then((res) => {
@@ -70,25 +70,24 @@ const TipsCommuDetail = () => {
 
   useEffect(() => {
     detailRef.current?.scrollIntoView();
-   
     getLists();
-     getCommentLists();
+    getCommentLists();
 }, []);
 
   const prevQna = ({ }) => {
-    lists && navigate(`/community/questions/${lists.questionBoardId - 1}`);
+    lists && navigate(`/community/tips/${lists.tipBoardId - 1}`);
     window.location.reload();
   }
 
   const nextQna = ({ }) => {
-    lists && navigate(`/community/questions/${lists.questionBoardId + 1}`);
+    lists && navigate(`/community/tips/${lists.tipBoardId + 1}`);
     window.location.reload();
   }
 
   return (
     <div ref={detailRef}>
-      <Common title="질문게시판">
-        <CommunityDetail lists={lists} url="questions" prevBtn={prevQna} nextBtn={nextQna} />
+      <Common title="정보게시판">
+        <CommunityDetail lists={lists} url="tips" prevBtn={prevQna} nextBtn={nextQna} />
       </Common>
       {/* 댓글 */}
       <div className={styles.comment_wrap}>

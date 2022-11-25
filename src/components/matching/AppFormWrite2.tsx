@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import effect from "../../assets/images/effect.svg";
 import styles from "./AppFormWrite2.module.css";
 import step2 from "../../assets/images/form/step2.svg";
@@ -9,6 +9,8 @@ import star from "../../assets/images/star.svg";
 import prevbtn from "../../assets/images/form/prevbtn.svg";
 import nextbtn from "../../assets/images/form/nextbtn.svg";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { lightState, marketExpState, onlineExpState } from "recoil/ApplicationState";
 
 const AppFormWrite2 = () => {
 
@@ -16,6 +18,95 @@ const AppFormWrite2 = () => {
   const onClickNext = () => {
     navigate('/fleamarket/apply/2');
   }
+
+  const [currentClick, setCurrentClick] = useState(null);
+  const [prevClick, setPrevClick] = useState(null);
+  const [zipClick, setZipClick] = useState(null);
+  const [pzipClick, setPzipClick] = useState(null);
+  const [lClick, setlClick] = useState(null);
+  const [kClick, setkClick] = useState(null);
+
+
+  const [marketExp, setMarketExp] =useRecoilState(marketExpState); //플리마켓 경험  
+  const [onlineExp, setOnlineExp] = useRecoilState(onlineExpState); //온라인 판매 경험
+  const [having, setHaving] = useRecoilState(lightState); //보유 집기
+  
+  const GetClick = (e:any) => {
+    setCurrentClick(e.target.id);
+    setMarketExp(!marketExp);
+    console.log(e.target.id, marketExp);
+
+  };
+
+  const ZipClick = (e:any) => {
+    setZipClick(e.target.id);
+    setOnlineExp(!onlineExp);
+  }
+
+  const onlClick = (e:any) => {
+    setlClick(e.target.id);
+    setHaving(!having);
+  }
+
+  useEffect(() => {    
+    if (currentClick !== null) {
+      let current = document.getElementById(currentClick);
+      console.log(current);
+      current.style.backgroundColor = "#FFB600";
+      current.style.color = "#00084A";
+      current.style.border = "2px solid #00084A";
+      
+    }
+
+    if (prevClick !== null) {
+      let prev = document.getElementById(prevClick);
+      prev.style.backgroundColor = "#FFFFFF";
+      prev.style.color = "#BABABA";
+      prev.style.border = "2px solid #BABABA";
+    }
+    setPrevClick(currentClick);
+ 
+},[currentClick]);
+
+useEffect(() => {    
+  if (zipClick !== null) {
+    let current = document.getElementById(zipClick);
+    console.log(current);
+    current.style.backgroundColor = "#FFB600";
+    current.style.color = "#00084A";
+    current.style.border = "2px solid #00084A";
+    
+  }
+
+  if (pzipClick !== null) {
+    let prev = document.getElementById(pzipClick);
+    prev.style.backgroundColor = "#FFFFFF";
+    prev.style.color = "#BABABA";
+    prev.style.border = "2px solid #BABABA";
+  }
+  setPrevClick(zipClick);
+
+},[zipClick]);
+
+useEffect(() => {    
+  if (lClick !== null) {
+    let current = document.getElementById(lClick);
+    console.log(current);
+    current.style.backgroundColor = "#FFB600";
+    current.style.color = "#00084A";
+    current.style.border = "2px solid #00084A";
+    
+  }
+
+  if (kClick !== null) {
+    let prev = document.getElementById(kClick);
+    prev.style.backgroundColor = "#FFFFFF";
+    prev.style.color = "#BABABA";
+    prev.style.border = "2px solid #BABABA";
+  }
+  setkClick(lClick);
+
+},[lClick]);
 
   return (
     <div className={styles.app_wrap}>
@@ -36,8 +127,8 @@ const AppFormWrite2 = () => {
             <div>플리마켓 참여 경험</div>
             </div>
             <div className={styles.form_experience}>
-              <span>유</span>
-              <span>무</span>
+              <span id="user" onClick={GetClick}>유</span>
+              <span id="company" onClick={GetClick}>무</span>
             
           </div>
         </div>
@@ -48,8 +139,8 @@ const AppFormWrite2 = () => {
             <div>온라인 판매 경험</div>
             </div>
             <div className={styles.form_experience}>
-              <span>유</span>
-              <span>무</span>
+              <span id="zip" onClick={ZipClick}>유</span>
+              <span id="pzip" onClick={ZipClick}>무</span>
             </div>
           
         </div>
@@ -58,17 +149,15 @@ const AppFormWrite2 = () => {
               <img src={star} alt="*" />
               <div>보유 집기</div>
             </div>
-            <div className={styles.form_category}>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
-              <span>공예</span>
+            <div className={styles.having_category}>
+              <span>가판대</span>
+              <span>진열대</span>
+              <span id="lClick" onClick={onlClick} >조명</span>
+              <span>보자기</span>
+              <span>행거</span>
+              <span>마네킹</span>
+              <span>거울</span>
+              <span>없음</span>
             </div>
           </div>
 

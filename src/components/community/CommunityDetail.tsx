@@ -30,7 +30,7 @@ const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
   const params = useParams().questionBoardId;
   const navigate = useNavigate();
   const [liked, setLiked] = useState();
-  const [isLikeStatus, setIsLikeState] = useState(false);
+  const [isLikeStatus, setIsLikeState] = useState();
 
   const deleteDesc = () => {
     const value = window.confirm("정말로 삭제하시겠습니까?");
@@ -52,8 +52,7 @@ const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
         .then((response) => {
           if (response.data.isSuccess) {
             setLiked(response.data.result);
-            setIsLikeState(!isLikeStatus);
-            // window.location.reload();
+            window.location.reload();
           }
         })
         .catch((err) => console.log(err))
@@ -91,12 +90,15 @@ const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
               <span className={styles.line}></span> {/* 작성자 */}
               <span><img src={heart} alt="♡" className={styles.icon}/>{lists.likeCnt}</span> {/* 좋아요 */}
               <span><img src={eye} alt="*" className={styles.icon}/>{lists.viewCnt}</span> {/* 조회수 */}
-              <button type="button" onClick={() => (navigate(`/community/questions/${lists.questionBoardId}/edit`, {
+              
+              
+              <button type="button" className={styles.btn} onClick={() => (navigate(`/community/questions/${lists.questionBoardId}/edit`, {
                 state: {
                   questionBoardId: lists.questionBoardId
                 }
               }))}>수정</button>
-              <button type="button" onClick={deleteDesc}>삭제</button>
+              <button type="button" className={styles.btn} onClick={deleteDesc}>삭제</button>
+             
               <div>
 
               </div>

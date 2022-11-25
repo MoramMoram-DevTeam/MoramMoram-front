@@ -15,8 +15,7 @@ const CUserSignup = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [pnum, setPnum] = useState<string>("");
   const [cnum, setCnum] = useState<string>("");
-  // const [cname, setCname] = useState<string>("");
-  const [hostCname, setHostCname] = useState<string>("");
+  const [cname, setCname] = useState<string>("");
 
   const onNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.currentTarget.value)
@@ -38,43 +37,41 @@ const CUserSignup = () => {
     setPnum(event.currentTarget.value)
   }
 
-  // const onCnameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setCname(event.currentTarget.value)
-  // }
+  const onCnameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCname(event.currentTarget.value)
+  }
 
   const onCnumHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCnum(event.currentTarget.value)
-  }
-
-  const onHostCnameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setHostCname(event.currentTarget.value)
   }
 
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-     const response = await axios.post('/app/sign-up', {
-        email: email,
-        name: name,
-        pw: password,
-        pnum: pnum,
-        uimg: "",
-        marketing: false
-      })
+     const response = await axios.post('/company-user/sign-up', {
+      email: email,
+      name: name,
+      pw: password,
+      pnum: pnum,
+      market_add: cnum,
+      office_add: cname,
+      uimg: "",
+      marketing: false
+     })
         if(response.data.atk) {
            alert('회원가입이 완료되었습니다.');
            localStorage.setItem('rtk', response.data.rtk);
             localStorage.setItem('atk', response.data.atk);
             setAuthorizationToken(response.data.atk);
-            navigate('/');
+            window.location.replace('/');
         }
-        else
-          alert('회원가입에 실패하였습니다.');
-         
+        else{
+          alert(`회원가입 실패: ${response.data.statusMessage}`);
+        }
       
-    } catch (err:any) {
-      alert(err.response.data.statusMessage);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -116,11 +113,11 @@ const CUserSignup = () => {
             </div> */}
             <div className={styles.box}>
               <h3>사업자명</h3>
-              <input name="cnum" type="text" placeholder="-을 포함하여 입력해주세요." value={cnum} onChange={onCnumHandler}className={styles.input_join} />
+              <input name="cname" type="text" placeholder="-을 포함하여 입력해주세요." value={cname} onChange={onCnameHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
               <h3>사업자 등록번호</h3>
-              <input name="hostCnum" type="text" value={hostCname} onChange={onHostCnameHandler}className={styles.input_join} />
+              <input name="hostCnum" type="text" value={cnum} onChange={onCnumHandler} className={styles.input_join} />
             </div>
             <div className={styles.box}>
               <div><label><input type="checkbox" name="xxx" value="personal" />{'['}필수{']'} 모람모람 이용 약관 및 개인정보 수집에 동의합니다.</label></div>
