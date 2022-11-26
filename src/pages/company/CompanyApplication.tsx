@@ -8,16 +8,49 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 const CompanyApplication = () => {
   
   const location = useLocation();
-  const pr = location.state.appId;
+  const pr = location.state.applicationId;
   const navigate = useNavigate();
   const detailRef = useRef<HTMLDivElement>(null);
-  const [appLists, setAppLists] = useState<any>();
+  const [appLists, setAppLists] = useState<any>(
+    {
+    "applicationId": 4,
+    "marketId": 1,
+    "userId": 2,
+    "storeName": "모람상점",
+    "onlineChannel": null,
+    "returnAddress": null,
+    "categoryId": 1,
+    "category1": true,
+    "category2": false,
+    "category3": false,
+    "category4": false,
+    "subCategoryId": 1,
+    "subCategory1": "가죽공예",
+    "subCategory2": null,
+    "subCategory3": null,
+    "subCategory4": null,
+    "subCategory5": null,
+    "marketExp": true,
+    "onlineExp": true,
+    "light": true,
+    "utensil": null,
+    "certificateImg": null,
+    "priceAvg": "1만원~2만원",
+    "itemImg": null,
+    "request": null,
+    "createdAt": "2022-11-23T05:13:56",
+    "updatedAt": "2022-11-23T05:13:56",
+    "status": null,
+		"userName": "육캔두잇"
+}
+);
 
   const getAppForm = () => {
     axios.get(`/applications/${pr}`)
       .then((res) => {
         if (res.data) {
           setAppLists(res.data);
+          console.log(appLists);
         }
       })
       .catch((err) => {
@@ -37,19 +70,20 @@ const CompanyApplication = () => {
 
   useEffect(() => {
     detailRef.current?.scrollIntoView();
-    getAppForm();
+    // getAppForm();
+    console.log(pr, 'pr');
+    console.log(appLists, 'applists');
 
   }, []);
   
 
   return (
+    appLists &&
     <div className={styles.app_wrap} ref={detailRef}>
       <div className={styles.app_title}>신청내역 확인<img src={effect} alt="*" /></div>
       
       <div className={styles.app_box}>
       <div>
-          {
-            appLists &&
             <div>
               <div className={styles.wrap}>
               <div className={styles.user_title}>{appLists.userName}님의 신청내역</div>
@@ -95,11 +129,15 @@ const CompanyApplication = () => {
                   </tbody>
                 </table>
               </div>
-  
             </div>
-          }
           
-            <button onClick={onClickTr}></button>
+         <div className={styles.btn_box}>
+          <button onClick={onClickTr}>수락</button>
+            <button onClick={onClickTr}>거절</button>
+         </div>
+            
+            
+
             </div>
       </div>
     </div>

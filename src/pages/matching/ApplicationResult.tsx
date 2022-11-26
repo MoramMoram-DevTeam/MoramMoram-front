@@ -7,7 +7,7 @@ import styles from "./ApplicationResult.module.css";
 const ApplicationResult = () => {
   const detailRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const [currentId, setCurrentId] = useState<any>();
+  const [currentAppId, setCurrentAppId] = useState<any>();
   const [lists, setLists] = useState<any>([
     //   {
     //     "applicationId": 1,
@@ -71,8 +71,13 @@ const ApplicationResult = () => {
     // }
   ]);
 
-  useEffect(() => {
-    detailRef.current?.scrollIntoView();
+  const onClickBtn = () => {
+    navigate('/company/application', {
+      state: {applicationId: currentAppId}
+    })
+  };
+
+  const getLists = () => {
     axios.get('/applications/company?m_id=3')
       .then((res) => {
         console.log('what?: ', res.data);
@@ -81,6 +86,11 @@ const ApplicationResult = () => {
       .catch((err) => {
         console.log(err);
       })
+  }
+
+  useEffect(() => {
+    detailRef.current?.scrollIntoView();
+    getLists();   
 
   }, []);
 
@@ -90,50 +100,18 @@ const ApplicationResult = () => {
       <div className={styles.app_title}>신청 리스트업 확인<img src={effect} alt="*" /></div>
       <div >
         <table>
-          <tbody>
+          <tbody >
             {
               lists.map((item: any) => (
-                <tr key={item.applicationId}>
+                <tr key={item.applicationId} onMouseEnter={() => {setCurrentAppId(item.applicationId); console.log(currentAppId);}}>
                   <td className={styles.td_title}>{item.userName}</td>
                   <td className={styles.td_desc}>{item.storeName}</td>
                   <td className={styles.td_btn}>
-                    <button className={styles.btn}>보기</button>
+                    <button className={styles.btn} onClick={onClickBtn}>보기</button>
                   </td>
                 </tr>
               ))
-
-
-            /*
-            //   lists &&
-            //   <tr>
-            //       <td className={styles.td_title}>{lists[0].userName}</td>
-            //       <td className={styles.td_desc}>{lists[0].storeName}</td>
-            //       <td className={styles.td_btn}>
-            //         <button className={styles.btn} onClick= {() => {
-            //           navigate('/company/application', {
-            //             state: {appId: lists[0].applicationId}
-            //           });
-            //         }}>보기</button>                    
-            //       </td>
-            //     </tr>
-            // }
-            //     {/* 
-                <tr>
-                  <td className={styles.td_title}>{lists[0].userName}</td>
-                  <td className={styles.td_desc}>{lists[0].storeName}</td>
-                  <td className={styles.td_btn}>
-                    <button className={styles.btn}>보기</button>
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td className={styles.td_title}>{lists[0].userName}</td>
-                  <td className={styles.td_desc}>{lists[0].storeName}</td>
-                  <td className={styles.td_btn}>
-                    <button className={styles.btn}>보기</button>
-                    
-                  </td>
-                </tr> */}
+          }
           </tbody>
         </table>
       </div>

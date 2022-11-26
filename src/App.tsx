@@ -17,7 +17,6 @@ import CUserSignup from 'pages/user/regist/CUserSignup';
 import "./lib/Refresh";
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from "history";
-import setAuthorizationToken from 'pages/user/setAuthorizationToken';
 import FleaMarketList from 'components/fleamarket/FleaMarketList';
 import FleaMarketDetail from 'components/fleamarket/FleaMarketDetail';
 import AppFormWrite1 from 'components/matching/AppFormWrite1';
@@ -32,12 +31,13 @@ import TipsCommuDetail from 'pages/community/tips/TipsCommuDetail';
 import TipsCommuEdit from 'pages/community/tips/TipsCommuEdit';
 import TipsCommuWrite from 'pages/community/tips/TipsCommuWrite';
 import AppFormWrite4 from 'components/matching/AppFormWrite4';
-import FleaCalendar from 'components/fleamarket/FleaCalendar';
+import FleaCalendar from 'pages/fleamarket/FleaCalendar';
 import MyPage from 'pages/mypage/MyPage';
 import CompanyApplication from 'pages/company/CompanyApplication';
 import Promotion from 'pages/company/Promotion';
 import CompanyMain from 'pages/CompanyMain';
 import ApplicationResult from 'pages/matching/ApplicationResult';
+import Calendar from 'pages/fleamarket/Calendar';
 
 export const history = createBrowserHistory();
 ReactGA.event({
@@ -72,8 +72,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/company" element={<CompanyMain />} />
-        {/* <Route path="/calendar" element={<Calendar/>} /> */}
 
+        <Route path="fleamarket/calendar" element={<Calendar />} />
         <Route path="/fleamarket/recommend" element={<FleaMarketList />} />
         <Route path="/fleamarket/:id" element={<FleaMarketDetail />} />
 

@@ -25,7 +25,7 @@ const Main = () => {
   const menu = [{
     title: "플리마켓 일정 확인",
     image: calendaricon,
-    url: "/fleamarket"
+    url: "/fleamarket/calendar"
   },
   {
     title: "프로모션 / 모집",

@@ -65,7 +65,7 @@ const Navbar = () => {
             <div className={styles.nav_dropdown}>
               <ul  className={styles.hidden_dropdown}></ul>
               <ul className={styles.nav_dropdown1}>
-                  <li><Link to="/fleamarket">일정확인</Link></li>
+                  <li><Link to="/fleamarket/calendar">일정확인</Link></li>
                   <li><Link to="/fleamarket/recommend">플리마켓 추천</Link></li>
                   <li><Link to="/app">신청서 작성 및 확인</Link></li>
               </ul>

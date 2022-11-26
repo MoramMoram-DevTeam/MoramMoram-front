@@ -46,7 +46,7 @@
   
   position: absolute;
   right: 5px;
-  top: 16px;
+  top: 20px;
 }
 
 .btn:hover {
@@ -60,17 +60,19 @@
 
 .td_title {
   width: 25%;
-  padding-left: 10px;
-  padding-top: 26px;
+  text-align: left;
+  padding: 30px 0 30px 10px;
   font-family: 'SUIT-Regular';
   font-size: 25px;
   box-sizing: border-box;
+  border-bottom: 1px bolid #BABABA;
 }
 
 .td_desc {
   color: #BDBDBD;  
   font-family: 'SUIT-Regular';
   font-size: 1.25rem;
+  text-align: left;
 }
 
 .wrap td {

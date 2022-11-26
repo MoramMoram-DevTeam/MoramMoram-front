@@ -26,10 +26,10 @@ html,body{ overflow-x: hidden; }
 
 .main_menu_bar {
   width: 100%;
-  height: 470px;
+  height: 500px;
   background-color: #F5F5F5;
   box-sizing: border-box;
-  padding: 3% 0;
+  padding: 4% 0 3% 0;
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -43,7 +43,8 @@ html,body{ overflow-x: hidden; }
 }
 
 .place_bar {
-  padding: 5% 0;
+  padding: 6% 0;
+  margin-bottom: 5%;
   position: relative;
 }
 
@@ -56,6 +57,7 @@ html,body{ overflow-x: hidden; }
 
 .hotplace_bar {
   height: 350px;
+  margin-top: 20px;
   margin-bottom: 50px;
   
 }

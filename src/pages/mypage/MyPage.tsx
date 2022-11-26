@@ -63,6 +63,7 @@ const MyPage = () => {
             <li>회원 정보 수정</li>
             <li>기본 신청서 관리</li>
             <li style={{color: "#FFB600"}}>플리마켓 신청 현황</li>
+            <li>사업자 등록증 관리</li>
           </ul>
           <div className={styles.line}></div>
           <ul>
@@ -133,7 +134,7 @@ const MyPage = () => {
                       <td className={styles.td_title}>{item.storeName}</td>
                       <td style={{ color: "#BDBDBD" }}>{item.createdAt.split('T')[0]}</td>
                       <td className={styles.td_btn}>
-                      {item.status === null ? <button className={styles.btn}>대기중</button> : <button className={styles.acp_btn}>승인</button> }                    
+                      {item.status === "WAITING" ? <button className={styles.btn}>대기</button> : <button className={styles.acp_btn}>승인</button> }                    
                       </td>
                     </tr>
                   ))
