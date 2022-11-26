@@ -26,7 +26,7 @@ const ApplicationForm = () => {
       <div className={styles.app_btn_wrap}>
         {(appArray as Array<AppForm>).map((item) => 
           <div className={styles.app_btn} onClick= {() => {
-            navigate('/fleamarket');
+            navigate('/fleamarket/recommend');
           }} key={item.id}>
               <img src={item.image} alt="icon"/>
               <div>

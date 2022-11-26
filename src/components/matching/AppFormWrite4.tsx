@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./AppFormWrite4.module.css";
 import effect from "../../assets/images/effect.svg";
@@ -9,43 +9,13 @@ import axios from "axios";
 const AppFormWrite4 = () => {
 
   const navigate = useNavigate();
-  const params = useParams().applicationId;
+  const location = useLocation();
+  const appId = location.state.applicationId;
   const detailRef = useRef<HTMLDivElement>(null);
-  const [appLists, setAppLists] = useState<any>(
-    {
-      "applicationId": 1,
-      "marketId": 1,
-      "userId": 2,
-      "storeName": "store",
-      "onlineChannel": null,
-      "returnAddress": null,
-      "categoryId": 1,
-      "category1": true,
-      "category2": false,
-      "category3": false,
-      "category4": false,
-      "subCategoryId": 1,
-      "subCategory1": "가죽지갑",
-      "subCategory2": "가죽공예",
-      "subCategory3": null,
-      "subCategory4": null,
-      "subCategory5": null,
-      "marketExp": true,
-      "onlineExp": true,
-      "utensil": null,
-      "certificateImg": null,
-      "priceAvg": "1만원~2만원",
-      "itemImg": null,
-      "request": null,
-      "createdAt": "2022-11-23T05:13:56",
-      "updatedAt": "2022-11-23T05:13:56",
-      "status": null,
-      "userName": "user"
-  }
-  );
+  const [appLists, setAppLists] = useState<any>();
 
   const getAppForm = () => {
-    axios.get(`/applications/${params}`)
+    axios.get(`/applications/${appId}`)
       .then((res) => {
         if (res.data) {
           setAppLists(res.data);
@@ -59,7 +29,7 @@ const AppFormWrite4 = () => {
 
   useEffect(() => {
     detailRef.current?.scrollIntoView();
-    // getAppForm();
+    getAppForm();
 
   }, []);
   
@@ -129,7 +99,7 @@ const AppFormWrite4 = () => {
           
         
         <button className={styles.submit_btn} onClick={() => {
-    navigate('/fleamarket/apply/result');
+    navigate('/mypage');
   }}>신청 결과 페이지 바로가기</button>
       </div>
       

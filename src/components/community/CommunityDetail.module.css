@@ -96,9 +96,9 @@
 .board_desc {
   margin-top: 2%;
   border-top: 0.5px solid #BABABA;
-  padding: 5% 2% 15% 2%;
+  padding: 3% 2% 15% 2%;
   font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 2rem;
   font-family: 'SUIT-Regular';
   
 }
