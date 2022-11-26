@@ -44,8 +44,7 @@ const MyPage = () => {
     detailRef.current?.scrollIntoView();
     axios.get('/applications')
       .then((res) => {
-        console.log(res.data);
-        //  setLists(res.data);
+        setLists(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +62,7 @@ const MyPage = () => {
             <li><img src={star} alt="*" />회원 정보 관리</li>
             <li>회원 정보 수정</li>
             <li>기본 신청서 관리</li>
-            <li>플리마켓 신청 현황</li>
+            <li style={{color: "#FFB600"}}>플리마켓 신청 현황</li>
           </ul>
           <div className={styles.line}></div>
           <ul>
@@ -86,42 +85,61 @@ const MyPage = () => {
         </div>
         <div className={styles.my_info}>
 
-          <ul>
-            <li><img src={star} alt="*" />고객정보</li>
+          <div className={styles.my_info_title}>
+            <img src={star} alt="*" />고객정보
+          </div>
+          <div className={styles.user_info}>
+            <table>
+              <tbody>
+                <tr>
+                  <th>이름</th>
+                  <td>육캔두잇</td>
+                </tr>
+                <tr>
+                  <th>이메일</th>
+                  <td>6candoit@naver.com</td>
+                </tr>
+              
+                <tr>
+                  <th>연락처</th>
+                  <td>010-1111-1234</td>
+                </tr>
+                <tr>
+                  <th>주소</th>
+                  <td>서울특별시 용산구 원효로 900</td>
+                </tr>
+                <tr>
+                  <th>마케팅 정보 수신</th>
+                  <td>YES</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          </ul>
-          <ul>
-            <li><img src={star} alt="*" />플리마켓 정보</li>
-
-          </ul>
-          <ul>
-            <li><img src={star} alt="*" />사업자 등록증 관리</li>
-
-          </ul>
-
-          <ul>
-            <li><img src={star} alt="*" />플리마켓 지원 현황</li></ul>
+          <div className={styles.my_info_title}>
+            <img src={star} alt="*" />플리마켓 지원 현황
+          </div>
+            
           <div>
+            <div className={styles.user_info}>
 
-
-            <div className={styles.wrap}>
-              <table>
-                <tbody>
-                  {
-                    lists ?
-                    
-                      <tr>
-                        <td className={styles.td_title}>{lists[0].userName}</td>
-                        <td style={{ color: "#BDBDBD" }}>{lists[0].createdAt.split('T')[0]}</td>
-                        <td>
-                          { lists[0].status ?  <button className={styles.btn}>완료</button> : <button className={styles.btn}>대기</button> }
-                        </td>
-                      </tr>  
-                      :
-                      <td>신청 내역이 없습니다.</td>                  
-                    }
-                </tbody>
-              </table>
+            <table>
+              <tbody>
+                
+               {  
+                  lists &&
+                   lists.map((item:any, idx:number) => (
+                    <tr key={idx}>
+                      <td className={styles.td_title}>{item.storeName}</td>
+                      <td style={{ color: "#BDBDBD" }}>{item.createdAt.split('T')[0]}</td>
+                      <td className={styles.td_btn}>
+                      {item.status === null ? <button className={styles.btn}>대기중</button> : <button className={styles.acp_btn}>승인</button> }                    
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
             </div>
           </div>
 

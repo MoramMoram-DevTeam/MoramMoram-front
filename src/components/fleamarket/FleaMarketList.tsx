@@ -5,6 +5,7 @@ import effect from "../../assets/images/effect.svg";
 import axios from "axios";
 import InfiniteFleaList from "./InfiniteFleaList";
 import FleaCarousel from "components/common/Carousel/FleaCarousel";
+import RecommendCarousel from "components/common/Carousel/RecommendCarousel";
 
 export interface FleaInfo {
   id: number
@@ -58,10 +59,18 @@ const FleaMarketList = () => {
       </div>
       {/* 신청 마감 임박 */}
       <div className={styles.deadline_box}>
+
         <div className={styles.inner_box}>
           <div className={styles.deadline_title}>신청 마감 임박!!</div>
             <FleaCarousel />
         </div>
+
+        <div className={styles.inner_box}>
+          <div className={styles.deadline_title}>많은 셀러가 찾아본 플리마켓</div>
+            <RecommendCarousel />
+        </div>
+
+        
       </div>     
       <div className={styles.apply_title }>신청 가능 플리마켓</div>
       <InfiniteFleaList />

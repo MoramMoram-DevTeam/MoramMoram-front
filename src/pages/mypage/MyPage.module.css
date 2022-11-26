@@ -13,7 +13,6 @@
   font-family: 'SUIT-SemiBold';
   font-size: 2.25rem;
   color: #0C205E;
-  padding-bottom: 5%;
 }
 
 .app_title img {
@@ -22,18 +21,12 @@
 }
 
 .flex_wrap {
+  
   width: 1128px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-}
-
-.my_menu {
-  width: 265px;
-  height: 1216px;
-  border-radius: 10px;
-  background-color: #FFF;
-  border: 1px solid #A7A7A7;
+  margin-top: 30px;
 }
 
 .my_info {
@@ -42,15 +35,24 @@
   border-radius: 10px;
   background-color: #FFF;
   border: 1px solid #A7A7A7;
+  padding: 30px ;
+  box-sizing: border-box;
 }
 
 .my_menu {
+  box-sizing: border-box;
   font-family: 'SUIT-Regular';
   font-size: 1.15rem;
   line-height: 2rem;
   padding-left: 20px;
-  padding-top: 50px;
+  padding-top:25px;
   box-sizing: border-box;
+
+  width: 265px;
+  height: 1216px;
+  border-radius: 10px;
+  background-color: #FFF;
+  border: 1px solid #A7A7A7;
 }
 
 .my_menu ul li:first-of-type {
@@ -73,54 +75,73 @@
   margin: 5% 0;
 }
 
-/*표*/
-.wrap {
-  flex: 1;
-  width: 100%;
-  padding: 10px 100px;
-  min-height: 100%;
-  position: relative;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
-.app_title {
+.my_info_title {
   font-family: 'SUIT-SemiBold';
-  font-size: 2.25rem;
-  color: #0C205E;
-  padding-bottom: 1%;
+  font-size: 1.25rem;
+  height: 32px;
+  margin: 10px 0;
+  padding: 0 20px;
 }
 
-.app_title img {
-  margin-left: 3px;
-  vertical-align: top;
+.my_info_title > img {
+  box-sizing: border-box;
+  padding-bottom: 4px;
+  margin-right: 5px;
+}
+/*유저정보*/
+.user_info table * {
+  font-family: 'SUIT-Light';
+  font-size: 18px;
+  line-height: 18px;
+
 }
 
-.wrap * {
+.user_info table {
+  border: none;
+  box-sizing: border-box;
+  text-align: left;
+  width: 95%;
+  margin: 0 auto;
+  padding-left: 10px;
+  margin-bottom: 40px;
+}
+
+
+.user_info table tr {
+  /* border: 1px solid red; */
+  border-bottom: 0.5px solid #BABABA;
+  height: 20px;
+}
+
+.user_info table th {
+  font-family: 'SUIT-Medium';
+  width: 30%;
+}
+
+.user_info table tr td {
+  background-color: none;
+  border-top: none;
   text-align: left;
 }
 
-.wrap table td {
-  height: 40px;
-}
-
 .btn {
-  width: 100px;
-  display: block;
-  margin: 0 auto;
+  width: 118px;
+  height: 38px;
   background-color: #D9D9D9;
   border: 2px solid #00084A;
+  color: #00084A;
   font-family: 'SUIT-Medium';
   text-align: center;
   font-size: 1.25rem;
   cursor: pointer;
 }
 
-.btn_ready {
-  width: 100px;
-  text-align: right;
-  background-color: #D9D9D9;
+.acp_btn {
+  width: 118px;
+  height: 38px;
+  background-color: #FFCB1D;
   border: 2px solid #00084A;
+  color: #00084A;
   font-family: 'SUIT-Medium';
   text-align: center;
   font-size: 1.25rem;
@@ -128,8 +149,4 @@
 }
 
 
-.wrap table .td_title {
-  width: 25%;
-  font-family: 'SUIT-SemiBold';
-  font-size: 1.25rem;
-}
+/*표*/

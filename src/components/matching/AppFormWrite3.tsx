@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { category1State, lightState, marketExpState, onlineChannelState, onlineExpState, priceAvgState, requestState, storeNameState, subCategory1State, subCategory2State } from "recoil/ApplicationState";
+import { MarketIdState } from "recoil/MarketIdState";
 
 const AppFormWrite3 = () => {
 
@@ -25,6 +26,8 @@ const AppFormWrite3 = () => {
   const subCategory1 = useRecoilValue(subCategory1State);
   const subCategory2 = useRecoilValue(subCategory2State);
   const light = useRecoilValue(lightState);
+
+  const marketId = useRecoilValue(MarketIdState);
 
   const [money, setMoney] = useRecoilState(priceAvgState);  
   const [etcNote, setEtcNote] = useRecoilState(requestState);
@@ -52,9 +55,9 @@ const AppFormWrite3 = () => {
 
   const onClickSubmit = async (e:any) => {
     e.preventDefault();
-    const data = {
+    const data1 = {
       storeName: storeName,
-      marketExp: 2,
+      marketExp: marketExp,
       onlineExp: onlineExp,
       onlineChannel: onlineChannel,
       priceAvg: money,
@@ -64,25 +67,19 @@ const AppFormWrite3 = () => {
       light: light,
       request: etcNote
     };
-    // let formData = new FormData();
-		// formData.append('data', new Blob([JSON.stringify(data)] , {type: "application/json"}));
-    // formData.append('certificate', null);
-		// formData.append('itemImg', null);
 
-    // const params = new URLSearchParams();
-    // params.append('m_id', this.);
     try{
-      const response = await axios.post('/applications/new', data, {
-       
-        params:{'m_id': 1},
-        headers: { "Content-Type": `multipart/form-data`}
-      }
-      )
+      console.log('data', data1);
+      console.log('market_id', marketId);
+      const response = await axios.post('/applications/new', data1 ,{
+        params: {m_id: marketId}
+      });
     
       if(response.data) {
         console.log(response.data);
-        alert(response.data.marketId);
-        window.location.replace('/fleamarket/apply/4');
+        navigate('/fleamarket/apply/4', {
+          state: {applicationId: response.data.applicationId}
+        });
       }
       else {
         if(response.data.status === "NO_AUTHORITY")
@@ -104,7 +101,6 @@ const AppFormWrite3 = () => {
   useEffect(() => {    
     if (currentMoney !== null) {
       let current = document.getElementById(currentMoney);
-      console.log(current);
       current.style.backgroundColor = "#FFB600";
       current.style.color = "#00084A";
       current.style.border = "2px solid #00084A";

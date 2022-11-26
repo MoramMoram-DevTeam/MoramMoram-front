@@ -1,15 +1,20 @@
 import axios from "axios";
 import React, {useState, useEffect, useRef} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import fleaPic from "../../assets/images/fleaPic.svg";
 import styles from "./FleaMarketDetail.module.css";
 import effect from "../../assets/images/effect.svg";
 import star from "../../assets/images/star.svg";
 import like from "../../assets/images/redlike.svg";
+import { useSetRecoilState } from "recoil";
+import { MarketIdState } from "recoil/MarketIdState";
 
 const FleaMarketDetail = () => {
   const navigate = useNavigate();
   const pr:any = useParams().id;
+  const location = useLocation();
+  const marketId = location.state.marketId;
+  const setMarketId = useSetRecoilState(MarketIdState);
   const [fleaDetail, setFleaDetail] = useState<any>([]);
   const detailRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +36,7 @@ const FleaMarketDetail = () => {
   useEffect(() => {
     detailRef.current?.scrollIntoView();
     getLists();
+    console.log(pr, marketId, '이거이거');
 }, []);
 
   const onClickLike = async () => {
@@ -48,6 +54,7 @@ const FleaMarketDetail = () => {
   }
 
   const onClickApply = () => {
+    setMarketId(pr);
     navigate('/fleamarket/apply/1');
   }
 

@@ -72,8 +72,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/company" element={<CompanyMain />} />
+        {/* <Route path="/calendar" element={<Calendar/>} /> */}
 
-        <Route path="/fleamarket" element={<FleaMarketList />} />
+        <Route path="/fleamarket/recommend" element={<FleaMarketList />} />
         <Route path="/fleamarket/:id" element={<FleaMarketDetail />} />
 
         <Route path="/app" element={<ApplicationForm />} />
@@ -81,6 +82,8 @@ function App() {
         <Route path="/fleamarket/apply/2" element={<AppFormWrite2 />} />
         <Route path="/fleamarket/apply/3" element={<AppFormWrite3 />} />
         <Route path="/fleamarket/apply/4" element={<AppFormWrite4 />} />
+
+        
         <Route path="/fleamarket/apply/result" element={<ApplicationResult />} />
 
         <Route path="/login" element={<Login />} />
