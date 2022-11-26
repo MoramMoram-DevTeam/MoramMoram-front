@@ -67,7 +67,7 @@ const CommunityWriting = ({url}:any) => {
     
       if(response.data.isSuccess) {
         alert(response.data.message);
-        window.location.replace(`/community/quesitions`);
+        window.location.replace(`/community/questions`);
       }
       else {
         if(response.data.status === "NO_AUTHORITY")

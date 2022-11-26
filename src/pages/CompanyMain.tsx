@@ -23,7 +23,7 @@ import mapicon from "../assets/images/main/mainmenu/mapicon.svg";
 const CompanyMain = () => {
 
   const menu = [{
-    title: "플리마켓 주최 /프로모션 대행",
+    title: "플리마켓 주최 대행",
     image: calendaricon,
     url: "/promotion"
   },

@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Top5Td from "./Top5Td";
+import pic1 from "../../assets/images/rank/1.svg";
+import pic2 from "../../assets/images/rank/2.svg";
+import pic3 from "../../assets/images/rank/3.svg";
+import pic4 from "../../assets/images/rank/4.svg";
+import pic5 from "../../assets/images/rank/5.svg";
 
 const TopTd = styled.td`
 
@@ -18,11 +22,19 @@ const TopTd = styled.td`
 const TdTitle = styled.td`
   font-family: 'SUIT-SemiBold';
   font-size: 1.125rem;
+  text-align: left;
 `
+
+const Rank = styled.img`
+  margin: 0 10px 0 5px;
+  vertical-align: middle;
+`;
 
 const CommuTop5Lists = ({url}:any) => {
   const navigate = useNavigate();
   const [top5, setTop5] = useState<any>();
+  const [currentQId, setCurrentQId] = useState<any>();
+  const arr = [pic1, pic2, pic3, pic4, pic5];
 
   const getQnaTop5 = async () => {
     await axios.get('/questions/top-posts')
@@ -44,25 +56,30 @@ const CommuTop5Lists = ({url}:any) => {
       })
   }
 
+  const onClickTr = () => {
+    navigate(`/community/questions/${currentQId}`,{
+      state: {
+        url: url,
+        questionBoardId: currentQId
+      }
+    })
+  }
+
   useEffect(() => {
     console.log(url);
     url === "questions" ? getQnaTop5() : getInfoTop5();
 
-  }, [])
-
-  const onClickTr =() => {
-    alert('hahaha');
-  }
+  }, []);
 
   return (
 
     url === "questions" ?
     
-      top5 && top5.map((item: { questionBoardId: number; title: string; boardDate: string; likeCnt: number; viewCnt: number; }) => (
+      top5 && top5.map((item: { questionBoardId: number; title: string; createdAt: string; likeCnt: number; viewCnt: number; }, idx:number) => (
         // <Top5Td key={item.questionBoardId} item={item} />
-        <tr onClick={onClickTr} key={item.questionBoardId}>
-        <TdTitle>{item.title}</TdTitle>
-        <TopTd className=''>{item.boardDate}</TopTd>
+        <tr style={{backgroundColor: "#F6F6F6"}} onClick={onClickTr} key={item.questionBoardId} onMouseEnter={() => setCurrentQId(item.questionBoardId)}>
+        <TdTitle><Rank src={arr[idx]} />{item.title}</TdTitle>
+        <TopTd className=''> { item.createdAt && item.createdAt.split(' ')[0]}</TopTd>
         <TopTd className=''>{item.likeCnt}</TopTd>
         <TopTd className=''>{item.viewCnt}</TopTd>
       </tr>
