@@ -18,7 +18,11 @@ const FleaCarousel = () => {
   const [FLists, setFLists] = useState<FleaInfo[] | undefined>([]);
 
   const getTop5FLists = async () => {
-    await axios.get('http://13.124.85.159:8080/markets')
+    await axios.get('/markets', {
+      headers: {
+        withCredentials: true
+      }
+    })
     .then((res) => {
       setFLists(res.data[0]);
     }).catch((err) => {
