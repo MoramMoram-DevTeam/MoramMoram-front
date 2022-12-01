@@ -1,0 +1,47 @@
+/*요일*/
+.fc-col-header-cell-cushion {
+    color: #00084A;
+}
+
+.fc-toolbar-chunk {
+    display: flex; 
+    align-items: center; 
+}
+
+.fc .fc-toolbar.fc-header-toolbar{
+    margin-bottom: -1.5em;
+    margin-top: 1.5em;
+}
+
+.fc .fc-button-primary{
+    margin-right: 20px;
+}
+
+.fc {
+  margin-left: 160px;
+  margin-right: 150px;
+  height: 900px;
+  width: 1100px;
+}
+
+.fc-col-header-cell .fc-day {
+    width: 50px;
+}
+
+.fc-col-header {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.fc .fc-button-primary{
+    background-color: #FFB600;
+    border-color: #FFB600;
+}
+
+.fc .fc-toolbar-title{
+    font-family: 'SUIT-ExtraBold';
+}
+
+.fc {
+    font-family: 'SUIT-Medium';
+}
