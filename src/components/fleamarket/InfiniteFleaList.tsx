@@ -26,7 +26,11 @@ const InfiniteFleaList = () => {
 
   const getTotalLists = async () => {
    
-    await axios.get('http://13.124.85.159:8080/markets')
+    await axios.get('/markets', {
+      headers: {
+        withCredentials: true
+      }
+    })
       .then((res) => {
         setInfoArr(res.data[1]);
         console.log(res.data);
