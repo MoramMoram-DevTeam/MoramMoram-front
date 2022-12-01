@@ -1,3 +1,11 @@
+declare namespace NodeJS {
+	interface ProcessEnv {
+      		NODE_ENV: 'development' | 'production' | 'test';
+      		PUBLIC_URL: string;
+      		REACT_APP_TEST: string;
+	}
+}
+
 declare module '*.svg' {
   import * as React from 'react';
 

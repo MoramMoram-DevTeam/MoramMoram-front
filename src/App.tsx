@@ -38,7 +38,6 @@ import Promotion from 'pages/company/Promotion';
 import CompanyMain from 'pages/CompanyMain';
 import ApplicationResult from 'pages/matching/ApplicationResult';
 import Calendar from 'pages/fleamarket/Calendar';
-
 export const history = createBrowserHistory();
 ReactGA.event({
   category: 'User',

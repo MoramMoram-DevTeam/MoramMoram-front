@@ -5,8 +5,6 @@ import './index.css';
 import App from './App';
 import setAuthorizationToken from 'pages/user/setAuthorizationToken';
 import { BrowserRouter } from 'react-router-dom';
-import ScrollToTop from 'lib/ScrollToTop';
-
 
 setAuthorizationToken(localStorage.getItem('atk'));
 
