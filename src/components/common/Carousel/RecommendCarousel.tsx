@@ -17,7 +17,7 @@ const RecommendCarousel = () => {
   const [FLists, setFLists] = useState<FleaInfo[] | undefined>([]);
 
   const getTop5FLists = async () => {
-    await axios.get('/markets/recommend')
+    await axios.get('http://13.124.85.159:8080/markets/recommend')
     .then((res) => {
       setFLists(res.data);
       console.log(res.data);
