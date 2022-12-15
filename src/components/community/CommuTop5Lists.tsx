@@ -38,8 +38,10 @@ const CommuTop5Lists = ({url}:any) => {
 
   const getQnaTop5 = async () => {
     await axios.get('/questions/top-posts')
-      .then((res) => {        
+      .then((res) => {
+             
         setTop5(res.data);
+        console.log('top5', top5);   
       })
       .catch((err) => {
         console.log(err);
@@ -49,7 +51,8 @@ const CommuTop5Lists = ({url}:any) => {
   const getInfoTop5 = async () => {
     await axios.get('/tips/top-posts')
       .then((res) => {        
-        setTop5(res.data.lists);
+        setTop5(res.data.result);
+        console.log('tip top5', res.data.result);   
       })
       .catch((err) => {
         console.log(err);
@@ -57,7 +60,7 @@ const CommuTop5Lists = ({url}:any) => {
   }
 
   const onClickTr = () => {
-    navigate(`/community/questions/${currentQId}`,{
+    navigate(`/community/${url}/${currentQId}`,{
       state: {
         url: url,
         questionBoardId: currentQId
@@ -66,7 +69,6 @@ const CommuTop5Lists = ({url}:any) => {
   }
 
   useEffect(() => {
-    console.log(url);
     url === "questions" ? getQnaTop5() : getInfoTop5();
 
   }, []);
@@ -85,10 +87,10 @@ const CommuTop5Lists = ({url}:any) => {
       </tr>
       ))
       :
-      top5 && top5.map((item: { tipBoardId: number; title: string; boardDate: string; likeCnt: number; viewCnt: number; }) => (
+      top5 && top5.map((item: { tipBoardId: number; title: string; boardDate: string; likeCnt: number; viewCnt: number; }, idx:number) => (
         // <Top5Td key={item.questionBoardId} item={item} />
-        <tr onClick={onClickTr} key={item.tipBoardId}>
-        <TdTitle>{item.title}</TdTitle>
+        <tr style={{backgroundColor: "#F6F6F6"}} onClick={onClickTr} key={item.tipBoardId} onMouseEnter={() => setCurrentQId(item.tipBoardId)}>
+        <TdTitle><Rank src={arr[idx]} />{item.title}</TdTitle>
         <TopTd className=''>{item.boardDate}</TopTd>
         <TopTd className=''>{item.likeCnt}</TopTd>
         <TopTd className=''>{item.viewCnt}</TopTd>
