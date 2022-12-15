@@ -63,14 +63,14 @@
 .deadline_box {
   width: 100%;
   background-color: #F2F2F2;
-  height: 940px;
   box-sizing: border-box;
-  padding-left: 10px;
-  padding-top: 15px;
+  padding: 20px 10px;
+  padding-bottom: 40px;
 }
 
 .inner_box {
   width: 1127px;
+  height: 420px;
   margin: 0 auto;
 }
 
@@ -78,7 +78,7 @@
   font-family: 'SUIT-SemiBold';
   font-size: 1.875rem;
   color: #00084A;
-  padding: 3% 0;
+  padding: 2% 0;
 }
 
 .deadline_frame {

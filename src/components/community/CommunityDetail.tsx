@@ -28,6 +28,7 @@ cursor: pointer;
 const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
 
   const params = useParams().questionBoardId;
+  const tipId = useParams().tipBoardId;
   const navigate = useNavigate();
   const [liked, setLiked] = useState();
   const [isLikeStatus, setIsLikeState] = useState();
@@ -35,18 +36,44 @@ const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
   const deleteDesc = () => {
     const value = window.confirm("정말로 삭제하시겠습니까?");
     if (value) {
-      axios.delete(`/questions/${params}/status/deleted`)
+      url === "questions" ?
+      axios.delete(`/${url}/${params}`)
         .then((response) => {
           if (response.data.result) {
             alert('삭제되었습니다.');
             navigate(`/community/${url}`);
           }
         })
+      :
+      axios.patch(`/${url}/${tipId}/status/deleted`)
+        .then((response) => {
+          console.log('res data', response.data);
+          if (response.data) {
+            alert('삭제되었습니다.');
+            navigate(`/community/${url}`);
+          }
+        })
+        .catch(err => 
+          {
+            console.log('삭제에러!!!', err);
+          }) 
     }
   }
 
   const onClicklike = () => {
-    axios.post(`/questions/${params}/like`, {
+    url === "questions" ?
+    axios.post(`/${url}/${params}/like`, {
+        post_id: params
+      })
+        .then((response) => {
+          if (response.data.isSuccess) {
+            setLiked(response.data.result);
+            window.location.reload();
+          }
+        })
+        .catch((err) => console.log(err))
+      :
+      axios.post(`/${url}/${tipId}/like`, {
         post_id: params
       })
         .then((response) => {
@@ -82,7 +109,7 @@ const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
 
       <>
 
-        <div className={styles.board} key={lists.tipBoardId}>
+        <div className={styles.board}>
           <div className={styles.board_title}>{lists.title}</div>
           <div className={styles.board_info}>
             <div>
@@ -91,12 +118,20 @@ const CommunityDetail = ({ lists, url, prevBtn, nextBtn }: any) => {
               <span><img src={heart} alt="♡" className={styles.icon}/>{lists.likeCnt}</span> {/* 좋아요 */}
               <span><img src={eye} alt="*" className={styles.icon}/>{lists.viewCnt}</span> {/* 조회수 */}
               
-              
+              {url === "questions" ? 
               <button type="button" className={styles.btn} onClick={() => (navigate(`/community/questions/${lists.questionBoardId}/edit`, {
                 state: {
                   questionBoardId: lists.questionBoardId
                 }
               }))}>수정</button>
+              :
+              <button type="button" className={styles.btn} onClick={() => (navigate(`/community/tips/${lists.tipBoardId}/edit`, {
+                state: {
+                  tipBoardId: lists.tipBoardId
+                }
+              }))}>수정</button>
+            }
+              
               <button type="button" className={styles.btn} onClick={deleteDesc}>삭제</button>
              
               <div>

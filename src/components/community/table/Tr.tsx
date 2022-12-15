@@ -28,8 +28,10 @@ const Tr = ({ lists }: any) => {
     // })
     // :
     <tbody>
-      {lists.url === "questions" &&
-      <CommuTop5Lists url={lists.url} /> }
+      
+      <CommuTop5Lists url={lists.url} /> 
+    
+    
       {
         lists && lists.url === "questions"
         ?

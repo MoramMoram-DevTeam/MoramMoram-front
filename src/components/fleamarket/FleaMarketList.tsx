@@ -24,6 +24,7 @@ const FleaMarketList = () => {
 
   const [FLists, setFLists] = useState<FleaInfo[] | undefined>([]);
   const [keyword, setKeyword] = useState<string>();
+  const isLogin = localStorage.getItem('atk');
   const onKeywordHandler = (event: React.ChangeEvent<HTMLInputElement>) => (
     setKeyword(event.currentTarget.value)
     
@@ -48,7 +49,7 @@ const FleaMarketList = () => {
 
   return (
     <div>
-      <div className={styles.inner_box}>
+      <div className={styles.flea_box}>
         <div className={styles.title}>플리마켓<img src={effect} alt="*" /></div>
         <div className={styles.desc}>플리마켓 정보를 알고 싶다면? 모람모람에서 모든 플리마켓 일정을 확인해보세요!</div>
 
@@ -64,11 +65,13 @@ const FleaMarketList = () => {
           <div className={styles.deadline_title}>신청 마감 임박!!</div>
             <FleaCarousel />
         </div>
-
-        <div className={styles.inner_box}>
+      {
+        isLogin && <div className={styles.inner_box}>
           <div className={styles.deadline_title}>많은 셀러가 찾아본 플리마켓</div>
             <RecommendCarousel />
         </div>
+      }
+        
 
         
       </div>     
