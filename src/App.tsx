@@ -31,7 +31,6 @@ import TipsCommuDetail from 'pages/community/tips/TipsCommuDetail';
 import TipsCommuEdit from 'pages/community/tips/TipsCommuEdit';
 import TipsCommuWrite from 'pages/community/tips/TipsCommuWrite';
 import AppFormWrite4 from 'components/matching/AppFormWrite4';
-import FleaCalendar from 'pages/fleamarket/FleaCalendar';
 import MyPage from 'pages/mypage/MyPage';
 import CompanyApplication from 'pages/company/CompanyApplication';
 import Promotion from 'pages/company/Promotion';
@@ -99,8 +98,6 @@ function App() {
         <Route path="/community/tips/:tipBoardId" element={<TipsCommuDetail />} />
         <Route path="/community/tips/:tipBoardId/edit" element={<TipsCommuEdit />} />
         <Route path="/community/tips/write" element={<TipsCommuWrite />} />
-
-        <Route path="/fleacalendar" element={<FleaCalendar />} />
 
         <Route path="/promotion" element={<Promotion />} />
 
